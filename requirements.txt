@@ -1,0 +1,7 @@
+deepchecks
+feature-engine
+numpy
+pandas
+scikit-learn
+statsmodels
+ydata-profiling
