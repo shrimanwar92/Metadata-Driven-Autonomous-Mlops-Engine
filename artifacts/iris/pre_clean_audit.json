@@ -1,0 +1,11 @@
+{
+    "config": {
+        "pps_threshold": 0.005,
+        "vif_threshold": 20.0
+    },
+    "id_cols": [
+        "Id"
+    ],
+    "duplicate_ratio": 0.020000000000000018,
+    "weak_features": []
+}

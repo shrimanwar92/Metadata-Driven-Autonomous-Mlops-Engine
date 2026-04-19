@@ -1,0 +1,15 @@
+{
+    "config": {
+        "pps_threshold": 0.005,
+        "vif_threshold": 20.0
+    },
+    "id_cols": [
+        "PassengerId",
+        "Name"
+    ],
+    "duplicate_ratio": 0.01683501683501687,
+    "weak_features": [
+        "Age",
+        "Cabin"
+    ]
+}

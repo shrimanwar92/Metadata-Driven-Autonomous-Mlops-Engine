@@ -1,0 +1,17 @@
+{
+    "config": {
+        "pps_threshold": 0.001,
+        "vif_threshold": 25.0
+    },
+    "id_cols": [
+        "id"
+    ],
+    "duplicate_ratio": 0.0,
+    "weak_features": [
+        "fractal_dimension_mean",
+        "texture_se",
+        "smoothness_se",
+        "symmetry_se",
+        "Unnamed: 32"
+    ]
+}
