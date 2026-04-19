@@ -1,0 +1,76 @@
+{
+    "project_metadata": {
+        "name": "Autonomous Medallion Pipeline",
+        "objective": "Domain-agnostic automated data cleaning with signal preservation",
+        "current_state": "Silver Layer Verified",
+        "frameworks": [
+            "pandas",
+            "deepchecks",
+            "feature-engine",
+            "ydata-profiling",
+            "statsmodels"
+        ]
+    },
+    "architectural_logic": {
+        "audit_phase": {
+            "mechanism": "Dynamic Thresholding",
+            "logic_modes": [
+                {
+                    "name": "Standard",
+                    "condition": "Balanced signal",
+                    "pps": 0.02,
+                    "vif": 10.0
+                },
+                {
+                    "name": "Small Dataset",
+                    "condition": "n_vars < 15",
+                    "pps": 0.005,
+                    "vif": 20.0
+                },
+                {
+                    "name": "Preservation/Rescue",
+                    "condition": "High sparsity or high redundancy",
+                    "pps": 0.001,
+                    "vif": 25.0
+                }
+            ],
+            "safety_trigger": "Active Preservation Mode if >80% features flagged or survivor count < 10"
+        },
+        "cleaning_phase": {
+            "mechanism": "Decoupled Execution",
+            "features": [
+                "Iterative VIF removal to ensure multi-collinearity control",
+                "Permutation importance-based PPS filtering",
+                "Automated imputation (Mean/Median for numeric, Constant for categorical)",
+                "Duplicate and Conflicting Label removal"
+            ]
+        }
+    },
+    "verified_datasets": {
+        "Breast_Cancer": {
+            "type": "Dense/Medical",
+            "outcome": "Saved from VIF over-cleaning; 6 key features preserved.",
+            "mode_used": "Preservation"
+        },
+        "Ames_Housing": {
+            "type": "Wide/Sparse",
+            "outcome": "Prevented mass feature loss; 64 features preserved.",
+            "mode_used": "Preservation"
+        },
+        "Titanic": {
+            "type": "Mixed/Tabular",
+            "outcome": "Successful age imputation; cabin noise pruned.",
+            "mode_used": "Small Dataset"
+        },
+        "Iris": {
+            "type": "Highly Redundant",
+            "outcome": "Efficient distillation; 4 features reduced to 2 with no signal loss.",
+            "mode_used": "Small Dataset"
+        }
+    },
+    "next_steps": [
+        "Gold Layer: Categorical Encoding strategy (One-Hot vs Target)",
+        "Gold Layer: Feature Scaling (Standard vs Robust)",
+        "Pipeline Integration: End-to-end orchestration script"
+    ]
+}

@@ -1,0 +1,5 @@
+Download this JSON file along with your latest audit.py and cleaning.py.
+
+In a new session, upload these files immediately.
+
+Prompt: "I am resuming the Autonomous Medallion project. Use the attached project_context.json to understand our current progress and the logic of the uploaded scripts. We are ready to move to the Gold Layer."
