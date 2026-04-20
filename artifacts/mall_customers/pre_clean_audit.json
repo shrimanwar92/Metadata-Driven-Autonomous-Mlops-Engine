@@ -1,0 +1,11 @@
+{
+    "config": {
+        "vif_threshold": 20.0,
+        "variance_threshold": 0.001,
+        "scaling_required": true
+    },
+    "id_cols": [
+        "CustomerID"
+    ],
+    "weak_features": []
+}

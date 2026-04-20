@@ -1,0 +1,9 @@
+{
+    "config": {
+        "vif_threshold": 10.0,
+        "variance_threshold": 0.001,
+        "scaling_required": true
+    },
+    "id_cols": [],
+    "weak_features": []
+}
