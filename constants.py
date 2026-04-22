@@ -13,8 +13,10 @@ CLEANED_DATASET_PATH = f"{cleaned_path}/silver_cleaned_data.csv"
 GOLD_DATASET_PATH = f"{cleaned_path}/gold_feature_engineered_data.csv"
 TARGET_COLUMN = "Species"
 JOBLIB_SAVE_PATH = f"{cleaned_path}/{DATASET}.joblib"
+BEST_MODEL_PATH = f"{cleaned_path}/{DATASET}_model.joblib"
 
 # Added metadata paths
 PRE_CLEAN_AUDIT_REPORT = f"{ARTIFACTS_PATH}/pre_clean_audit.json"
 YDATA_REPORT_JSON = f"{ARTIFACTS_PATH}/report.json"
 GOLD_AUDIT_REPORT = f"{ARTIFACTS_PATH}/gold_audit.json"
+MODEL_METRICS_REPORT = f"{ARTIFACTS_PATH}/metrics.json"
