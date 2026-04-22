@@ -9,7 +9,7 @@ from feature_engine.selection import DropFeatures, DropCorrelatedFeatures
 from sklearn.inspection import permutation_importance
 from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-from constants import DATASET_PATH, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT, CLEANED_DATASET_PATH, TARGET_COLUMN, VIF_THRESHOLD, PPS_THRESHOLD
+from ..constants import DATASET_PATH, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT, CLEANED_DATASET_PATH, TARGET_COLUMN, VIF_THRESHOLD, PPS_THRESHOLD
 
 def get_pps_filter(df, num_vars, target_col, threshold=0.02):
     """

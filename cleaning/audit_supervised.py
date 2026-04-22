@@ -6,7 +6,7 @@ import json
 import os
 from deepchecks.tabular import Dataset
 from deepchecks.tabular.checks import DataDuplicates, FeatureLabelCorrelation
-from constants import DATASET_PATH, TARGET_COLUMN, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT
+from ..constants import DATASET_PATH, TARGET_COLUMN, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT
 
 def run_pre_clean_audit():
     print("⚖️ Phase 2: Auditing Signal Integrity (Dynamic Mode)...")

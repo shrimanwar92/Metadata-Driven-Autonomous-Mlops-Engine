@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
-from constants import DATASET_PATH, TIMESERIES_AUDIT_REPORT, CLEANED_DATASET_PATH
+from ..constants import DATASET_PATH, TIMESERIES_AUDIT_REPORT, CLEANED_DATASET_PATH
 
 def handle_sequential_imputation(df):
     """

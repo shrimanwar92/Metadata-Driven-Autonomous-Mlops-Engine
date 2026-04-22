@@ -1,0 +1,39 @@
+{
+    "metadata": {
+        "hopkins_statistic": 0.044,
+        "is_clusterable": true,
+        "suggested_algo": "KMeans"
+    },
+    "categorical_encoding": {
+        "rare_label_cols": [],
+        "one_hot_cols": [],
+        "frequency_cols": [],
+        "drop_features": []
+    },
+    "numerical_transformations": {
+        "log_transform": [
+            "CREDIT_LIMIT",
+            "MINIMUM_PAYMENTS",
+            "TENURE"
+        ],
+        "yeo_johnson": [
+            "BALANCE",
+            "BALANCE_FREQUENCY",
+            "ONEOFF_PURCHASES",
+            "INSTALLMENTS_PURCHASES",
+            "CASH_ADVANCE",
+            "ONEOFF_PURCHASES_FREQUENCY",
+            "CASH_ADVANCE_FREQUENCY",
+            "CASH_ADVANCE_TRX",
+            "PURCHASES_TRX",
+            "PAYMENTS",
+            "PRC_FULL_PAYMENT"
+        ],
+        "scaling_method": "RobustScaler"
+    },
+    "selection_reduction": {
+        "correlation_threshold": 0.85,
+        "apply_pca": false,
+        "pca_variance": 0.95
+    }
+}

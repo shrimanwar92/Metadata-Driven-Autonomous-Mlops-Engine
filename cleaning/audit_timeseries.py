@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import json
 import os
-from constants import DATASET_PATH, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT
+from ..constants import DATASET_PATH, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT
 
 def run_timeseries_audit():
     print("⏳ Phase 2: Auditing for Sequential Time Series...")
