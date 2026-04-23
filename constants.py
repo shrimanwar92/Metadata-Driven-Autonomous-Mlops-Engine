@@ -1,6 +1,8 @@
 from pathlib import Path
 
-DATASET = "mall_customers"
+DATASET = "ames"
+TARGET_COLUMN = "SalePrice"
+
 artifacts_path = Path(f"artifacts/{DATASET}")
 cleaned_path = Path(f"dataset/cleaned/{DATASET}")
 
@@ -11,8 +13,7 @@ DATASET_PATH = f"dataset/{DATASET}.csv"
 ARTIFACTS_PATH = artifacts_path
 CLEANED_DATASET_PATH = f"{cleaned_path}/silver_cleaned_data.csv"
 GOLD_DATASET_PATH = f"{cleaned_path}/gold_feature_engineered_data.csv"
-TARGET_COLUMN = "Species"
-JOBLIB_SAVE_PATH = f"{cleaned_path}/{DATASET}.joblib"
+JOBLIB_PIPELINE_PATH = f"{cleaned_path}/{DATASET}.joblib"
 BEST_MODEL_PATH = f"{cleaned_path}/{DATASET}_model.joblib"
 
 # Added metadata paths

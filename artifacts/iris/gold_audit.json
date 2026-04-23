@@ -1,0 +1,17 @@
+{
+    "metadata": {
+        "target": "Species",
+        "task": "classification",
+        "search_space_version": "v3-autonomous"
+    },
+    "categorical_encoding": {
+        "mean_encoding_cols": [],
+        "rare_label_cols": []
+    },
+    "numerical_transformations": {
+        "yeo_johnson": []
+    },
+    "feature_selection": {
+        "drop_features": []
+    }
+}
