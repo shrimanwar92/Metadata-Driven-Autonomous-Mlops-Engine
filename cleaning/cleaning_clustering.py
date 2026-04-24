@@ -8,7 +8,11 @@ from sklearn.ensemble import IsolationForest
 from feature_engine.imputation import MeanMedianImputer, CategoricalImputer
 from feature_engine.selection import DropFeatures, DropCorrelatedFeatures
 from statsmodels.stats.outliers_influence import variance_inflation_factor
-from ..constants import (
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from constants import (
     DATASET_PATH, 
     YDATA_REPORT_JSON, 
     PRE_CLEAN_AUDIT_REPORT, 

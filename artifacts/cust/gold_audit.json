@@ -1,0 +1,100 @@
+{
+    "metadata": {
+        "target": "is_late",
+        "task": "classification",
+        "apply_log_target": false,
+        "target_skew": 0.0,
+        "expected_features": [
+            "Customer_ID",
+            "Invoice_ID",
+            "Amount",
+            "Due_Date_minus_Document_Date_days",
+            "Due_Date_minus_Document_Date_days_abs",
+            "Clearing_Date_minus_Document_Date_days",
+            "Clearing_Date_minus_Document_Date_days_abs",
+            "Clearing_Date_minus_Due_Date_days",
+            "Clearing_Date_minus_Due_Date_days_abs",
+            "Clearing_Date_minus_Due_Date_days_is_positive",
+            "Document_Date_month",
+            "Document_Date_day_of_month",
+            "Document_Date_day_of_week",
+            "Document_Date_weekend",
+            "Document_Date_quarter",
+            "Due_Date_year",
+            "Due_Date_month",
+            "Due_Date_day_of_month",
+            "Due_Date_day_of_week",
+            "Due_Date_weekend",
+            "Due_Date_quarter",
+            "Clearing_Date_year",
+            "Clearing_Date_month",
+            "Clearing_Date_day_of_month",
+            "Clearing_Date_day_of_week",
+            "Clearing_Date_weekend",
+            "Clearing_Date_quarter"
+        ],
+        "detected_datetime_columns": [
+            "Document_Date",
+            "Due_Date",
+            "Clearing_Date"
+        ],
+        "generated_date_features": [
+            "Due_Date_minus_Document_Date_days",
+            "Due_Date_minus_Document_Date_days_abs",
+            "Due_Date_minus_Document_Date_days_is_positive",
+            "Clearing_Date_minus_Document_Date_days",
+            "Clearing_Date_minus_Document_Date_days_abs",
+            "Clearing_Date_minus_Document_Date_days_is_positive",
+            "Clearing_Date_minus_Due_Date_days",
+            "Clearing_Date_minus_Due_Date_days_abs",
+            "Clearing_Date_minus_Due_Date_days_is_positive"
+        ],
+        "dropped_constant_features": [
+            "Due_Date_minus_Document_Date_days_is_positive",
+            "Clearing_Date_minus_Document_Date_days_is_positive",
+            "Document_Date_year"
+        ]
+    },
+    "categorical_encoding": {
+        "mean_encoding_cols": [
+            "Customer_ID",
+            "Invoice_ID"
+        ],
+        "rare_label_cols": [
+            "Customer_ID",
+            "Invoice_ID"
+        ]
+    },
+    "numerical_transformations": {
+        "yeo_johnson": [
+            "Clearing_Date_minus_Due_Date_days_is_positive",
+            "Document_Date_weekend",
+            "Due_Date_year",
+            "Due_Date_weekend",
+            "Clearing_Date_year",
+            "Clearing_Date_weekend"
+        ],
+        "scaling_method": "StandardScaler"
+    },
+    "feature_selection": {
+        "drop_features": [
+            "Document_Date_day_of_week",
+            "Clearing_Date_month",
+            "Clearing_Date_year",
+            "Amount",
+            "Due_Date_weekend",
+            "Due_Date_minus_Document_Date_days_abs",
+            "Clearing_Date_quarter",
+            "Document_Date_weekend",
+            "Clearing_Date_weekend",
+            "Due_Date_day_of_week",
+            "Document_Date_quarter",
+            "Customer_ID",
+            "Clearing_Date_day_of_week",
+            "Invoice_ID",
+            "Due_Date_year",
+            "Document_Date_day_of_month",
+            "Clearing_Date_day_of_month"
+        ]
+    }
+}

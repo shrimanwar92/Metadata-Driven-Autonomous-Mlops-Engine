@@ -2,7 +2,11 @@ import pandas as pd
 import numpy as np
 import json
 import os
-from ..constants import DATASET_PATH, TIMESERIES_AUDIT_REPORT, CLEANED_DATASET_PATH
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from constants import DATASET_PATH, TIMESERIES_AUDIT_REPORT, CLEANED_DATASET_PATH
 
 def handle_sequential_imputation(df):
     """

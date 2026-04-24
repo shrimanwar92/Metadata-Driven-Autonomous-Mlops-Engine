@@ -1,8 +1,11 @@
 import pandas as pd
 import numpy as np
 import json
+
+import sys
 import os
-from ..constants import DATASET_PATH, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from constants import DATASET_PATH, YDATA_REPORT_JSON, PRE_CLEAN_AUDIT_REPORT
 
 def run_timeseries_audit():
     print("⏳ Phase 2: Auditing for Sequential Time Series...")

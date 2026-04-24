@@ -3,7 +3,11 @@ import numpy as np
 np.Inf = np.inf
 from deepchecks.tabular import Dataset
 from deepchecks.tabular.suites import data_integrity
-from ..constants import TARGET_COLUMN, ARTIFACTS_PATH, CLEANED_DATASET_PATH
+
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from constants import TARGET_COLUMN, ARTIFACTS_PATH, CLEANED_DATASET_PATH
 
 def validate_silver_layer():
     print("\n✅ Phase 4: Validating Silver Layer (Deepchecks)...")
