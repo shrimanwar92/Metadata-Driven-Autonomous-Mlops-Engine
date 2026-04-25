@@ -1,0 +1,44 @@
+{
+    "metadata": {
+        "target": "Survived",
+        "task": "classification",
+        "apply_log_target": false,
+        "target_skew": 0.0,
+        "expected_features": [
+            "Pclass",
+            "Sex",
+            "Age",
+            "SibSp",
+            "Parch",
+            "Ticket",
+            "Fare",
+            "Embarked"
+        ]
+    },
+    "categorical_encoding": {
+        "mean_encoding_cols": [
+            "Sex",
+            "Ticket",
+            "Embarked"
+        ],
+        "rare_label_cols": [
+            "Sex",
+            "Ticket",
+            "Embarked"
+        ]
+    },
+    "numerical_transformations": {
+        "yeo_johnson": [
+            "SibSp",
+            "Parch",
+            "Fare"
+        ],
+        "scaling_method": "StandardScaler"
+    },
+    "feature_selection": {
+        "drop_features": [
+            "SibSp",
+            "Parch"
+        ]
+    }
+}

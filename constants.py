@@ -1,7 +1,7 @@
 from pathlib import Path
 
-DATASET = "cust"
-TARGET_COLUMN = "is_late"
+DATASET = "ames"
+TARGET_COLUMN = "SalePrice"
 
 artifacts_path = Path(f"artifacts/{DATASET}")
 cleaned_path = Path(f"dataset/cleaned/{DATASET}")

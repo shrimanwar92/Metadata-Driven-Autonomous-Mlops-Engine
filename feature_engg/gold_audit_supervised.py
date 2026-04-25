@@ -9,6 +9,22 @@ from sklearn.feature_selection import mutual_info_regression, mutual_info_classi
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from constants import CLEANED_DATASET_PATH, GOLD_AUDIT_REPORT, TARGET_COLUMN
 
+def detect_datetime_cols(df):
+    dt_vars = []
+
+    for col in df.columns:
+        if pd.api.types.is_numeric_dtype(df[col]):
+            continue
+        
+        try:
+            parsed = pd.to_datetime(df[col].dropna().astype(str).head(50), errors='coerce')
+            if parsed.notna().mean() > 0.8:
+                dt_vars.append(col)
+        except:
+            continue
+
+    return dt_vars
+
 def run_gold_audit_supervised(target_col, task='regression'):
     print(f"🌟 Phase 5: Generating Supervised Strategy for [{target_col}]...")
     df = pd.read_csv(CLEANED_DATASET_PATH)
@@ -22,6 +38,7 @@ def run_gold_audit_supervised(target_col, task='regression'):
     
     num_vars = X.select_dtypes(include=[np.number]).columns.tolist()
     cat_vars = X.select_dtypes(exclude=[np.number]).columns.tolist()
+    dt_vars = detect_datetime_cols(X)
 
     # --- TARGET AWARENESS (NEW) ---
     target_skew = skew(y) if task == 'regression' else 0
@@ -45,6 +62,9 @@ def run_gold_audit_supervised(target_col, task='regression'):
         },
         "feature_selection": {
             "drop_features": []
+        },
+        "datetime_transformations": {
+            "dt_vars": dt_vars
         }
     }
 
@@ -60,7 +80,10 @@ def run_gold_audit_supervised(target_col, task='regression'):
     mi_series = pd.Series(mi_scores, index=X.columns)
 
     # --- IMPROVED THRESHOLD ---
-    strategy["feature_selection"]["drop_features"] = mi_series[mi_series < 0.01].index.tolist()
+    #strategy["feature_selection"]["drop_features"] = mi_series[mi_series < 0.01].index.tolist()
+    weak_features = mi_series[mi_series < 0.01].index.tolist()
+    drop_features = [col for col in weak_features if col not in dt_vars]
+    strategy["feature_selection"]["drop_features"] = drop_features
 
     with open(GOLD_AUDIT_REPORT, 'w') as f:
         json.dump(strategy, f, indent=4)
