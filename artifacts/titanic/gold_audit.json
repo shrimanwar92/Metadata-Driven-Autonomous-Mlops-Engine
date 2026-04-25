@@ -16,15 +16,15 @@
         ]
     },
     "categorical_encoding": {
-        "mean_encoding_cols": [
+        "one_hot_cols": [
             "Sex",
-            "Ticket",
             "Embarked"
         ],
+        "mean_encoding_cols": [
+            "Ticket"
+        ],
         "rare_label_cols": [
-            "Sex",
-            "Ticket",
-            "Embarked"
+            "Ticket"
         ]
     },
     "numerical_transformations": {
@@ -36,9 +36,6 @@
         "scaling_method": "StandardScaler"
     },
     "feature_selection": {
-        "drop_features": [
-            "SibSp",
-            "Parch"
-        ]
+        "drop_features": []
     }
 }

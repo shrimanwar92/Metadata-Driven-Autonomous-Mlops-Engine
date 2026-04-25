@@ -2,14 +2,21 @@
     "metadata": {
         "target": "Species",
         "task": "classification",
-        "search_space_version": "v3-autonomous"
+        "apply_log_target": false,
+        "target_skew": 0.0,
+        "expected_features": [
+            "SepalWidthCm",
+            "PetalWidthCm"
+        ]
     },
     "categorical_encoding": {
+        "one_hot_cols": [],
         "mean_encoding_cols": [],
         "rare_label_cols": []
     },
     "numerical_transformations": {
-        "yeo_johnson": []
+        "yeo_johnson": [],
+        "scaling_method": "StandardScaler"
     },
     "feature_selection": {
         "drop_features": []

@@ -176,13 +176,9 @@
             "Street",
             "Utilities",
             "Land Slope",
-            "Roof Matl",
             "Heating",
             "Functional",
             "Mo Sold"
         ]
-    },
-    "datetime_transformations": {
-        "dt_vars": []
     }
 }
