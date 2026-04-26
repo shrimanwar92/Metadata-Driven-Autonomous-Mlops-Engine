@@ -50,40 +50,21 @@ def decide_pipeline(profile):
 # =========================================================
 # EXECUTION ROUTER
 # =========================================================
-def run_pipeline(pipeline_type):
+def run_pipeline():
 
-    print(f"🧠 Routing to: {pipeline_type.upper()} pipeline")
+    print(f"🧠 Running pipeline")
 
-    if pipeline_type == "temporal":
+    # ---- AUDIT ----
+    subprocess.run([
+        sys.executable,
+        "feature_engg/gold_audit_supervised.py"
+    ], check=True)
 
-        # ---- AUDIT ----
-        subprocess.run([
-            sys.executable,
-            "feature_engg/temporal/gold_audit_temporal_supervised.py"
-        ], check=True)
-
-        # ---- FEATURE ENGINEERING ----
-        subprocess.run([
-            sys.executable,
-            "feature_engg/temporal/feature_engg_temporal_supervised.py"
-        ], check=True)
-
-    elif pipeline_type == "tabular":
-
-        # ---- AUDIT ----
-        subprocess.run([
-            sys.executable,
-            "feature_engg/tabular/gold_audit_tabular_supervised.py"
-        ], check=True)
-
-        # ---- FEATURE ENGINEERING ----
-        subprocess.run([
-            sys.executable,
-            "feature_engg/tabular/feature_engg_tabular_supervised.py"
-        ], check=True)
-
-    else:
-        raise ValueError(f"❌ Unknown pipeline type: {pipeline_type}")
+    # ---- FEATURE ENGINEERING ----
+    subprocess.run([
+        sys.executable,
+        "feature_engg/feature_engg_supervised.py"
+    ], check=True)
 
 
 # =========================================================
@@ -91,10 +72,10 @@ def run_pipeline(pipeline_type):
 # =========================================================
 def run_router():
     print("🚀 Phase 4: Routing using Profiler Report")
-    profile = load_profile(PROFILER_REPORT_PATH)
-    pipeline_type = decide_pipeline(profile)
-    print(f"✅ Selected Pipeline: {pipeline_type}")
-    run_pipeline(pipeline_type)
+    #profile = load_profile(PROFILER_REPORT_PATH)
+    #pipeline_type = decide_pipeline(profile)
+    #print(f"✅ Selected Pipeline: {pipeline_type}")
+    run_pipeline()
 
 
 # =========================================================

@@ -1,24 +1,13 @@
 {
-    "metadata": {
-        "target": "Species",
-        "task": "classification",
-        "apply_log_target": false,
-        "target_skew": 0.0,
-        "expected_features": [
-            "SepalWidthCm",
-            "PetalWidthCm"
-        ]
-    },
-    "categorical_encoding": {
-        "one_hot_cols": [],
-        "mean_encoding_cols": [],
-        "rare_label_cols": []
-    },
-    "numerical_transformations": {
-        "yeo_johnson": [],
-        "scaling_method": "StandardScaler"
-    },
-    "feature_selection": {
-        "drop_features": []
-    }
+    "selected_features": [
+        "PetalWidthCm"
+    ],
+    "base_columns": [
+        "SepalWidthCm",
+        "PetalWidthCm",
+        "SepalWidthCm_minus_PetalWidthCm",
+        "SepalWidthCm_ratio_PetalWidthCm"
+    ],
+    "target_column": "Species",
+    "target_exists": true
 }
