@@ -1,27 +1,22 @@
 {
     "metadata": {
-        "hopkins_statistic": 0.3198,
-        "is_clusterable": false,
-        "suggested_algo": "KMeans"
+        "entity_id": "CustomerID",
+        "mode": "profile",
+        "segmentation_columns": [
+            "Gender",
+            "Age",
+            "Annual Income (k$)",
+            "Spending Score (1-100)"
+        ]
     },
-    "categorical_encoding": {
-        "rare_label_cols": [
-            "Gender"
+    "aggregations": {
+        "metrics": [
+            "Age",
+            "Annual Income (k$)",
+            "Spending Score (1-100)"
         ],
-        "one_hot_cols": [
-            "Gender"
-        ],
-        "frequency_cols": [],
-        "drop_features": []
-    },
-    "numerical_transformations": {
-        "log_transform": [],
-        "yeo_johnson": [],
-        "scaling_method": "StandardScaler"
-    },
-    "selection_reduction": {
-        "correlation_threshold": 0.85,
-        "apply_pca": false,
-        "pca_variance": 0.95
+        "methods": [
+            "identity"
+        ]
     }
 }

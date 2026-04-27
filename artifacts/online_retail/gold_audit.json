@@ -1,53 +1,30 @@
 {
     "metadata": {
-        "hopkins_statistic": 0.0153,
-        "is_clusterable": true,
-        "entity_id": "CustomerID",
-        "suggested_algo": "KMeans"
-    },
-    "behavioral_features": {
-        "enabled": true,
-        "normalize_numeric": true,
-        "agg_methods": [
-            "sum",
-            "mean",
-            "std"
-        ]
-    },
-    "temporal_features": {
-        "date_cols": [
-            "InvoiceDate"
-        ],
-        "extract_features": [
-            "month",
-            "day_of_week",
-            "hour"
-        ],
-        "calculate_diffs": false
-    },
-    "categorical_encoding": {
-        "rare_label_cols": [],
-        "one_hot_cols": [],
-        "frequency_cols": [
-            "Country"
-        ],
-        "drop_features": [
+        "all_potential_entities": [
             "InvoiceNo",
             "StockCode",
-            "Description"
+            "Description",
+            "Quantity",
+            "InvoiceDate",
+            "UnitPrice",
+            "CustomerID"
+        ],
+        "entity_id": "CustomerID",
+        "segmentation_columns": [
+            "Country"
         ]
     },
-    "numerical_transformations": {
-        "log_transform": [],
-        "yeo_johnson": [
+    "aggregations": {
+        "metrics": [
             "Quantity",
-            "UnitPrice"
+            "UnitPrice",
+            "CustomerID"
         ],
-        "scaling_method": "StandardScaler"
-    },
-    "selection_reduction": {
-        "correlation_threshold": 0.9,
-        "apply_pca": false,
-        "pca_variance": 0.95
+        "methods": [
+            "sum",
+            "mean",
+            "std",
+            "nunique"
+        ]
     }
 }

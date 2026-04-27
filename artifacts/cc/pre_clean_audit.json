@@ -1,11 +1,20 @@
 {
     "config": {
+        "subject_id": "CUST_ID",
         "vif_threshold": 10.0,
         "variance_threshold": 0.001,
         "scaling_required": true
     },
     "id_cols": [
-        "CUST_ID"
+        "CUST_ID",
+        "BALANCE",
+        "PAYMENTS",
+        "MINIMUM_PAYMENTS"
+    ],
+    "drop_cols": [
+        "BALANCE",
+        "PAYMENTS",
+        "MINIMUM_PAYMENTS"
     ],
     "weak_features": []
 }

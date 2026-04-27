@@ -1,39 +1,36 @@
 {
     "metadata": {
-        "hopkins_statistic": 0.044,
-        "is_clusterable": true,
-        "suggested_algo": "KMeans"
-    },
-    "categorical_encoding": {
-        "rare_label_cols": [],
-        "one_hot_cols": [],
-        "frequency_cols": [],
-        "drop_features": []
-    },
-    "numerical_transformations": {
-        "log_transform": [
-            "CREDIT_LIMIT",
-            "MINIMUM_PAYMENTS",
+        "entity_id": "CUST_ID",
+        "mode": "profile",
+        "segmentation_columns": [
+            "BALANCE_FREQUENCY",
+            "PURCHASES_FREQUENCY",
+            "ONEOFF_PURCHASES_FREQUENCY",
+            "PURCHASES_INSTALLMENTS_FREQUENCY",
+            "CASH_ADVANCE_FREQUENCY",
+            "CASH_ADVANCE_TRX",
+            "PRC_FULL_PAYMENT",
             "TENURE"
-        ],
-        "yeo_johnson": [
-            "BALANCE",
+        ]
+    },
+    "aggregations": {
+        "metrics": [
             "BALANCE_FREQUENCY",
             "ONEOFF_PURCHASES",
             "INSTALLMENTS_PURCHASES",
             "CASH_ADVANCE",
+            "PURCHASES_FREQUENCY",
             "ONEOFF_PURCHASES_FREQUENCY",
+            "PURCHASES_INSTALLMENTS_FREQUENCY",
             "CASH_ADVANCE_FREQUENCY",
             "CASH_ADVANCE_TRX",
             "PURCHASES_TRX",
-            "PAYMENTS",
-            "PRC_FULL_PAYMENT"
+            "CREDIT_LIMIT",
+            "PRC_FULL_PAYMENT",
+            "TENURE"
         ],
-        "scaling_method": "RobustScaler"
-    },
-    "selection_reduction": {
-        "correlation_threshold": 0.85,
-        "apply_pca": false,
-        "pca_variance": 0.95
+        "methods": [
+            "identity"
+        ]
     }
 }
