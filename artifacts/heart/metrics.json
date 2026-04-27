@@ -1,20 +1,20 @@
 {
     "KMeans": {
         "optimal_k": 2,
-        "silhouette": 0.9619,
-        "calinski_harabasz": 24239.7769,
-        "davies_bouldin": 0.1336
+        "silhouette": 0.36676748723224256,
+        "calinski_harabasz": 359.7289724598335,
+        "davies_bouldin": 1.1525661014191697
     },
     "Agglomerative": {
         "optimal_k": 2,
-        "silhouette": 0.962,
-        "calinski_harabasz": 24015.6118,
-        "davies_bouldin": 0.1364
+        "silhouette": 0.3695120307150633,
+        "calinski_harabasz": 357.9804417656589,
+        "davies_bouldin": 1.1320524645681485
     },
     "GMM": {
         "optimal_k": 2,
-        "silhouette": 0.9619,
-        "calinski_harabasz": 24239.7769,
-        "davies_bouldin": 0.1336
+        "silhouette": 0.3664814644494698,
+        "calinski_harabasz": 345.28740491392097,
+        "davies_bouldin": 1.1378801716096465
     }
 }

@@ -24,21 +24,19 @@ def evaluate_algorithm(X, algo_name, k_range=[2, 3, 4, 5, 6, 7, 8]):
             model = AgglomerativeClustering(n_clusters=k)
             labels = model.fit_predict(X)
         elif algo_name == 'GMM':
-            model = GaussianMixture(n_components=k, random_state=42)
+            # Maintained reg_covar to prevent LinAlgError
+            model = GaussianMixture(n_components=k, random_state=42, reg_covar=1e-3)
             labels = model.fit_predict(X)
         
-        # Calculate Metrics
-        sil = silhouette_score(X, labels)
-        ch = calinski_harabasz_score(X, labels)
-        db = davies_bouldin_score(X, labels)
+        score = silhouette_score(X, labels)
         
-        if sil > best_score:
-            best_score = sil
+        if score > best_score:
+            best_score = score
             best_results = {
                 "k": k,
-                "silhouette": round(sil, 4),
-                "calinski_harabasz": round(ch, 4),
-                "davies_bouldin": round(db, 4),
+                "silhouette": score,
+                "calinski_harabasz": calinski_harabasz_score(X, labels),
+                "davies_bouldin": davies_bouldin_score(X, labels),
                 "model_instance": model
             }
             
@@ -46,10 +44,25 @@ def evaluate_algorithm(X, algo_name, k_range=[2, 3, 4, 5, 6, 7, 8]):
 
 def run_clustering_training():
     print("🧠 Phase 7: Training & Evaluating Clustering Models...")
-    X = pd.read_csv(GOLD_DATASET_PATH)
     
+    # 1. Load Data
+    X = pd.read_csv(GOLD_DATASET_PATH)
+
+    # 2. Load the audit to find the dynamic ID name
     with open(GOLD_AUDIT_REPORT, 'r') as f:
         audit = json.load(f)
+    entity_col = audit["metadata"].get("entity_id") # e.g., "patientId" or "id"
+
+    # 3. Dynamic Isolation
+    if entity_col in X.columns:
+        X.set_index(entity_col, inplace=True)
+        print(f"  ✅ Entity '{entity_col}' isolated as index.")
+    else:
+        # Fallback: check for common ID substrings if the audit is missing
+        id_candidates = [c for c in X.columns if any(x in c.lower() for x in ['id', 'uuid', 'pk'])]
+        if id_candidates:
+            X.set_index(id_candidates[0], inplace=True)
+            print(f"  ⚠️ Warning: Exact entity not found, using {id_candidates[0]} as index.")
     
     all_metrics = {}
     best_overall_sil = -1
@@ -63,7 +76,6 @@ def run_clustering_training():
         print(f"Testing {algo}...")
         res = evaluate_algorithm(X, algo)
         
-        # Store metrics without the model object
         all_metrics[algo] = {
             "optimal_k": res["k"],
             "silhouette": res["silhouette"],
@@ -80,12 +92,10 @@ def run_clustering_training():
     with open(MODEL_METRICS_REPORT, 'w') as f:
         json.dump(all_metrics, f, indent=4)
     
-    # Save the Champion Model
-    joblib.dump(best_overall_model, BEST_MODEL_PATH)
-    
-    print(f"✅ Training Complete. Champion: {best_algo_name} (K={all_metrics[best_algo_name]['optimal_k']})")
-    print(f"📄 Metrics stored in {MODEL_METRICS_REPORT}")
-    return all_metrics
+    # Save the best model
+    if best_overall_model:
+        joblib.dump(best_overall_model, BEST_MODEL_PATH)
+        print(f"🏆 Best Model: {best_algo_name} with Silhouette {best_overall_sil:.4f}")
 
 if __name__ == "__main__":
     run_clustering_training()

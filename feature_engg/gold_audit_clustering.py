@@ -8,64 +8,74 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from constants import CLEANED_DATASET_PATH, GOLD_AUDIT_REPORT, PROFILER_CLEAN_REPORT_PATH, PRE_CLEAN_AUDIT_REPORT
 
 def run_gold_audit_clustering():
-    print("🌟 Phase 4: Generic Entity & Mode Discovery...")
+    print("🌟 Phase 4: Robust Entity & Mode Discovery...")
 
     df = pd.read_csv(CLEANED_DATASET_PATH)
     
-    # 1. Load Anchor from Silver Audit (Phase 2)
-    # This ensures we respect the CustomerID found earlier
+    # 1. Load Anchor from Silver Audit (Phase 2) if available
     try:
         with open(PRE_CLEAN_AUDIT_REPORT, 'r') as f:
             silver_audit = json.load(f)
         subject_id = silver_audit['config'].get('subject_id')
-    except FileNotFoundError:
+    except (FileNotFoundError, KeyError):
         subject_id = None
 
-    print("🔍 Profiling clean Data...")
+    print("🔍 Profiling Clean Data...")
     profile = ProfileReport(df, minimal=True, explorative=True)
     profile.to_file(PROFILER_CLEAN_REPORT_PATH)
 
-    # 2. Extract Profiler Metadata
     with open(PROFILER_CLEAN_REPORT_PATH, 'r') as f:
         profiler = json.load(f)
     variables = profiler.get('variables', {})
 
-    # 3. Determine Entity
-    # If a subject_id was identified in cleaning, it MUST be the entity
-    if subject_id and subject_id in df.columns:
-        selected_entity = subject_id
+    # 2. Enhanced Entity Selection Logic
+    if not subject_id:
+        potential_entities = []
+        for col, s in variables.items():
+            # Criteria: High cardinality but not a technical row index
+            if 0.001 < s.get('p_distinct', 0) < 0.99 and s.get('n_distinct', 0) > 1:
+                potential_entities.append(col)
+        
+        # Scoring: Strong business keywords get top priority
+        keywords = ['customer', 'user', 'client', 'account', 'member', 'patient']
+        priority = [e for e in potential_entities if any(k in e.lower() for k in keywords)]
+        
+        if priority:
+            selected_entity = priority[0]
+        else:
+            # Fallback to general IDs
+            id_fallback = [e for e in potential_entities if 'id' in e.lower()]
+            selected_entity = id_fallback[0] if id_fallback else potential_entities[0]
     else:
-        # Fallback: Find high-cardinality candidates
-        potential_entities = [col for col, s in variables.items() 
-                             if s.get('p_distinct', 0) > 0.001 and s.get('n_distinct', 0) > 1]
-        priority = [e for e in potential_entities if any(x in e.lower() for x in ['customer', 'user', 'id'])]
-        selected_entity = priority[0] if priority else potential_entities[0]
+        selected_entity = subject_id
 
-    # 4. Mode Detection: Profile vs Transactional
-    # If the entity is unique, we don't aggregate; we process as a profile.
-    is_unique = variables.get(selected_entity, {}).get('is_unique', False)
-    mode = "profile" if is_unique else "transactional"
+    # 3. Robust Mode Detection
+    # If the selected entity has duplicates, it's transactional
+    distinct_ratio = variables.get(selected_entity, {}).get('p_distinct', 1.0)
+    mode = "profile" if distinct_ratio > 0.98 else "transactional"
 
-    # 5. Define Strategy
+    # 4. Strategy Definition
+    # Increased threshold for categories to capture more signal
     clusterable_dimensions = [col for col, s in variables.items() 
-                             if 1 < s.get('n_distinct', 0) < 100]
+                             if 1 < s.get('n_distinct', 0) < 500]
 
     strategy = {
         "metadata": {
             "entity_id": selected_entity,
             "mode": mode,
-            "segmentation_columns": clusterable_dimensions
+            "segmentation_columns": clusterable_dimensions,
+            "row_count": len(df)
         },
         "aggregations": {
             "metrics": [c for c, s in variables.items() if s.get('type') == 'Numeric' and c != selected_entity],
-            "methods": ["identity"] if mode == "profile" else ["sum", "mean", "std"]
+            "methods": ["identity"] if mode == "profile" else ["sum", "mean", "std", "nunique"]
         }
     }
 
     with open(GOLD_AUDIT_REPORT, 'w') as f:
         json.dump(strategy, f, indent=4)
     
-    print(f"✅ Gold Audit complete. Entity: {selected_entity} | Mode: {mode.upper()}")
+    print(f"✅ Strategy Saved: {selected_entity} ({mode} mode)")
 
 if __name__ == "__main__":
     run_gold_audit_clustering()

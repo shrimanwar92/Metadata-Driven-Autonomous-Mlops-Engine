@@ -8,14 +8,17 @@
             "dataset",
             "cp",
             "trestbps",
+            "chol",
             "fbs",
             "restecg",
+            "thalch",
             "exang",
             "oldpeak",
             "slope",
             "ca",
             "thal"
-        ]
+        ],
+        "row_count": 874
     },
     "aggregations": {
         "metrics": [
