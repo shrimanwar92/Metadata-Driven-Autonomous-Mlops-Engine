@@ -1,41 +1,22 @@
 {
-    "metadata": {
-        "target": "Survived",
-        "task": "classification",
-        "apply_log_target": false,
-        "target_skew": 0.0,
-        "expected_features": [
-            "Pclass",
-            "Sex",
-            "Age",
-            "SibSp",
-            "Parch",
-            "Ticket",
-            "Fare",
-            "Embarked"
-        ]
-    },
-    "categorical_encoding": {
-        "one_hot_cols": [
-            "Sex",
-            "Embarked"
-        ],
-        "mean_encoding_cols": [
-            "Ticket"
-        ],
-        "rare_label_cols": [
-            "Ticket"
-        ]
-    },
-    "numerical_transformations": {
-        "yeo_johnson": [
-            "SibSp",
-            "Parch",
-            "Fare"
-        ],
-        "scaling_method": "StandardScaler"
-    },
-    "feature_selection": {
-        "drop_features": []
-    }
+    "selected_features": [
+        "Pclass",
+        "Fare",
+        "Parch",
+        "Age",
+        "SibSp"
+    ],
+    "base_columns": [
+        "Pclass",
+        "Sex",
+        "Age",
+        "SibSp",
+        "Parch",
+        "Ticket",
+        "Fare",
+        "Embarked"
+    ],
+    "target_column": "Survived",
+    "target_exists": true,
+    "model_type": "classification"
 }
