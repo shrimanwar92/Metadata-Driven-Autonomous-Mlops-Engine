@@ -1,8 +1,18 @@
 {
     "metadata": {
-        "hopkins_statistic": 0.1694,
+        "hopkins_statistic": 0.0153,
         "is_clusterable": true,
+        "entity_id": "CustomerID",
         "suggested_algo": "KMeans"
+    },
+    "behavioral_features": {
+        "enabled": true,
+        "normalize_numeric": true,
+        "agg_methods": [
+            "sum",
+            "mean",
+            "std"
+        ]
     },
     "temporal_features": {
         "date_cols": [
@@ -17,10 +27,10 @@
     },
     "categorical_encoding": {
         "rare_label_cols": [],
-        "one_hot_cols": [
+        "one_hot_cols": [],
+        "frequency_cols": [
             "Country"
         ],
-        "frequency_cols": [],
         "drop_features": [
             "InvoiceNo",
             "StockCode",
@@ -33,10 +43,10 @@
             "Quantity",
             "UnitPrice"
         ],
-        "scaling_method": "RobustScaler"
+        "scaling_method": "StandardScaler"
     },
     "selection_reduction": {
-        "correlation_threshold": 0.85,
+        "correlation_threshold": 0.9,
         "apply_pca": false,
         "pca_variance": 0.95
     }
