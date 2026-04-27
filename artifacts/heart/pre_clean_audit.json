@@ -1,12 +1,12 @@
 {
     "config": {
-        "subject_id": "CUST_ID",
-        "vif_threshold": 10.0,
+        "subject_id": "id",
+        "vif_threshold": 20.0,
         "variance_threshold": 0.001,
         "scaling_required": true
     },
     "id_cols": [
-        "CUST_ID"
+        "id"
     ],
     "drop_cols": [],
     "weak_features": []

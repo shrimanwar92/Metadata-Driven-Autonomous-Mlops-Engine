@@ -1,0 +1,33 @@
+{
+    "metadata": {
+        "entity_id": "id",
+        "mode": "profile",
+        "segmentation_columns": [
+            "age",
+            "sex",
+            "dataset",
+            "cp",
+            "trestbps",
+            "fbs",
+            "restecg",
+            "exang",
+            "oldpeak",
+            "slope",
+            "ca",
+            "thal"
+        ]
+    },
+    "aggregations": {
+        "metrics": [
+            "age",
+            "trestbps",
+            "chol",
+            "thalch",
+            "oldpeak",
+            "ca"
+        ],
+        "methods": [
+            "identity"
+        ]
+    }
+}

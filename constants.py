@@ -1,6 +1,6 @@
 from pathlib import Path
 
-DATASET = "cc"
+DATASET = "heart"
 TARGET_COLUMN = None
 
 artifacts_path = Path(f"artifacts/{DATASET}")
