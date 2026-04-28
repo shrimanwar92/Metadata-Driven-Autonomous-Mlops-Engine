@@ -8,3 +8,5 @@ ydata-profiling
 pyclustertend
 xgboost
 featuretools
+dotenv
+google-genai

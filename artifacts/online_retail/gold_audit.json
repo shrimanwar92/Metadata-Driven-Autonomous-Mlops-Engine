@@ -1,30 +1,29 @@
 {
-    "metadata": {
-        "all_potential_entities": [
-            "InvoiceNo",
-            "StockCode",
-            "Description",
-            "Quantity",
-            "InvoiceDate",
-            "UnitPrice",
-            "CustomerID"
-        ],
-        "entity_id": "CustomerID",
-        "segmentation_columns": [
-            "Country"
+    "subject_id": "CustomerID",
+    "protected_features": [
+        "Quantity",
+        "UnitPrice",
+        "Country"
+    ],
+    "priority_interactions": [
+        {
+            "pair": [
+                "Quantity",
+                "UnitPrice"
+            ],
+            "logic": "multiplication",
+            "name": "Revenue"
+        }
+    ],
+    "base_metrics": [
+        "Quantity",
+        "UnitPrice"
+    ],
+    "selection_params": {
+        "correlation_threshold": 0.95,
+        "force_keep": [
+            "Revenue"
         ]
     },
-    "aggregations": {
-        "metrics": [
-            "Quantity",
-            "UnitPrice",
-            "CustomerID"
-        ],
-        "methods": [
-            "sum",
-            "mean",
-            "std",
-            "nunique"
-        ]
-    }
+    "scaling": "RobustScaler"
 }

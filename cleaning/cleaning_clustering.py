@@ -1,78 +1,65 @@
-import numpy as np
-import json
 import pandas as pd
+import json
 import os
-from sklearn.pipeline import Pipeline
-from sklearn.ensemble import IsolationForest
-from feature_engine.imputation import MeanMedianImputer, CategoricalImputer
-from feature_engine.selection import DropFeatures, DropCorrelatedFeatures
-
 import sys
+from sklearn.pipeline import Pipeline
+from feature_engine.imputation import MeanMedianImputer, CategoricalImputer
+from feature_engine.encoding import OneHotEncoder, RareLabelEncoder
+from feature_engine.transformation import LogTransformer, YeoJohnsonTransformer
+from feature_engine.selection import DropFeatures
+
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from constants import DATASET_PATH, PRE_CLEAN_AUDIT_REPORT, CLEANED_DATASET_PATH
 
-def handle_outliers(df, numeric_vars):
-    # Ensure we don't use IDs for outlier detection
-    numeric_vars = [v for v in numeric_vars if v in df.columns]
-    if not numeric_vars: return df
-    
-    print(f"  🔍 Detecting spatial outliers on: {numeric_vars}")
-    iso = IsolationForest(contamination=0.05, random_state=42)
-    clean_numeric = df[numeric_vars].fillna(df[numeric_vars].median())
-    outlier_preds = iso.fit_predict(clean_numeric)
-    return df[outlier_preds == 1].copy()
-
 def run_clustering_cleaning():
-    print("🧹 Phase 3: Cleaning Silver Layer (Generic Logic)...")
-    df = pd.read_csv(DATASET_PATH)
+    print("⚙️ Phase 3: Cleaning Engine (Execution)")
+    df = pd.read_csv(DATASET_PATH, encoding="latin1")
+    
     with open(PRE_CLEAN_AUDIT_REPORT, 'r') as f:
-        audit = json.load(f)
+        contract = json.load(f)
 
-    subject_id = audit['config']['subject_id']
-    
-    # 1. Pipeline: Pruning & Imputation
-    # We drop weak features and garbage IDs, but PROTECT the subject_id
-    to_drop = [c for c in (audit['drop_cols'] + audit['weak_features']) 
-               if c in df.columns and c != subject_id]
-    
     steps = []
-    if to_drop:
-        steps.append(('noise_pruning', DropFeatures(features_to_drop=to_drop)))
-    
-    # Identify columns for imputer (excluding subject_id)
-    num_vars = df.select_dtypes(include=np.number).columns.tolist()
-    final_num = [v for v in num_vars if v not in to_drop and v != subject_id]
-    
-    cat_vars = df.select_dtypes(exclude=np.number).columns.tolist()
-    final_cat = [v for v in cat_vars if v not in to_drop and v != subject_id]
 
-    if final_num:
-        steps.append(('num_impute', MeanMedianImputer(variables=final_num)))
-        # Multi-collinearity check: Safer alternative to VIF for automated pipelines
-        if len(final_num) >= 2:
-            steps.append(('corr_filter', DropCorrelatedFeatures(threshold=0.90, variables=final_num)))
-    
-    if final_cat:
-        steps.append(('cat_impute', CategoricalImputer(variables=final_cat, ignore_format=True)))
+    # 1. Execution: Drop Technical Garbage
+    if contract["drop_features"]:
+        # Only drop if the column actually exists in the current dataframe
+        valid_drops = [c for c in contract["drop_features"] if c in df.columns]
+        steps.append(('drop_garbage', DropFeatures(features_to_drop=valid_drops)))
 
-    # 2. Transform
-    df_silver = Pipeline(steps).fit_transform(df)
+    # 2. Execution: Imputation
+    if contract["imputation"]["mean_median"]:
+        steps.append(('num_imputer', MeanMedianImputer(variables=contract["imputation"]["mean_median"])))
+    if contract["imputation"]["categorical"]:
+        steps.append(('cat_imputer', CategoricalImputer(variables=contract["imputation"]["categorical"])))
 
-    # 3. Spatial Outlier Removal (Ignore ID)
-    numeric_for_outliers = df_silver.select_dtypes(include=[np.number]).columns.tolist()
-    if subject_id in numeric_for_outliers:
-        numeric_for_outliers.remove(subject_id)
-        
-    df_silver = handle_outliers(df_silver, numeric_for_outliers)
-    
-    # 4. Final Cleanup: Ensure subject_id has no NaNs (Clustering anchors must be solid)
-    if subject_id in df_silver.columns:
-        df_silver = df_silver.dropna(subset=[subject_id])
+    # 3. Execution: Encoding
+    if contract["encoding"]["rare_label"]:
+        steps.append(('rare_enc', RareLabelEncoder(variables=contract["encoding"]["rare_label"])))
+    if contract["encoding"]["one_hot"]:
+        steps.append(('ohe_enc', OneHotEncoder(variables=contract["encoding"]["one_hot"])))
 
-    # 5. Save
-    os.makedirs(os.path.dirname(CLEANED_DATASET_PATH), exist_ok=True)
-    df_silver.to_csv(CLEANED_DATASET_PATH, index=False)
-    print(f"✅ Silver Data Saved. Subject Anchor '{subject_id}' preserved.")
+    # 4. Execution: Transformations
+    if contract["transformations"]["log"]:
+        steps.append(('log_trans', LogTransformer(variables=contract["transformations"]["log"])))
+    if contract["transformations"]["yeo_johnson"]:
+        steps.append(('yeo_trans', YeoJohnsonTransformer(variables=contract["transformations"]["yeo_johnson"])))
+
+    # Run Pipeline
+    cleaning_pipe = Pipeline(steps)
+    df_silver = cleaning_pipe.fit_transform(df)
+
+    # 5. Execution: Anchor ID to Index
+    subject_id = contract.get("subject_id")
+    if subject_id and subject_id in df_silver.columns:
+        df_silver = df_silver.set_index(subject_id)
+        print(f"⚓ Anchor Set: {subject_id}")
+    elif subject_id is None:
+        df_silver.index.name = "observation_id"
+        print("⚓ No Subject ID found. Using Observation Index.")
+
+    # Save Silver Layer
+    df_silver.to_csv(CLEANED_DATASET_PATH)
+    print(f"✅ Silver Layer saved to {CLEANED_DATASET_PATH}. Shape: {df_silver.shape}")
 
 if __name__ == "__main__":
     run_clustering_cleaning()

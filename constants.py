@@ -1,6 +1,6 @@
 from pathlib import Path
 
-DATASET = "cc"
+DATASET = "online_retail"
 TARGET_COLUMN = None
 
 artifacts_path = Path(f"artifacts/{DATASET}")
@@ -20,7 +20,9 @@ BEST_MODEL_PATH = f"{cleaned_path}/{DATASET}_model.joblib"
 CLUSTER_PERSONAS_PATH = f"{cleaned_path}/cluster_personas.json"
 
 # Added metadata paths
-PRE_CLEAN_AUDIT_REPORT = f"{ARTIFACTS_PATH}/pre_clean_audit.json"
+PRE_CLEAN_AUDIT_REPORT = f"{ARTIFACTS_PATH}/silver_audit.json"
 YDATA_REPORT_JSON = f"{ARTIFACTS_PATH}/report.json"
 GOLD_AUDIT_REPORT = f"{ARTIFACTS_PATH}/gold_audit.json"
 MODEL_METRICS_REPORT = f"{ARTIFACTS_PATH}/metrics.json"
+DOMAIN_POLICY_PATH = f"{ARTIFACTS_PATH}/domain_policy.json"
+FEATURE_ENGG_STRATEGY_PATH = f"{ARTIFACTS_PATH}/feature_engg_strategy.json"

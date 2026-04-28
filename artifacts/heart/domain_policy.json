@@ -1,0 +1,17 @@
+{
+    "domain": "Clinical",
+    "subject_id": "id",
+    "protected_features": [
+        "age",
+        "trestbps",
+        "chol",
+        "thalch",
+        "oldpeak",
+        "cp",
+        "thal",
+        "ca"
+    ],
+    "technical_garbage": [
+        "dataset"
+    ]
+}

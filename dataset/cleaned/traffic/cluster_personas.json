@@ -1,0 +1,26 @@
+[
+    {
+        "persona_id": 0,
+        "population_share": "99.57%",
+        "defining_traits": [
+            "Low flow_rate_per_average_speed",
+            "Low vehicle_count_per_average_speed",
+            "Low lane_occupancy_per_average_speed",
+            "Low waiting_time_per_average_speed",
+            "Low average_speed"
+        ],
+        "logical_summary": "Group 0 captures users defined primarily by Low flow_rate_per_average_speed."
+    },
+    {
+        "persona_id": 1,
+        "population_share": "0.43%",
+        "defining_traits": [
+            "Extreme High flow_rate_per_average_speed",
+            "Extreme High vehicle_count_per_average_speed",
+            "Extreme High lane_occupancy_per_average_speed",
+            "Extreme High waiting_time_per_average_speed",
+            "Extreme Low average_speed"
+        ],
+        "logical_summary": "Group 1 captures users defined primarily by Extreme High flow_rate_per_average_speed."
+    }
+]

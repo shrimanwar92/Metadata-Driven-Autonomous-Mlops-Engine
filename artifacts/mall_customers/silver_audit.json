@@ -1,0 +1,19 @@
+{
+    "drop_features": [
+        "CustomerID"
+    ],
+    "subject_id": "CustomerID",
+    "imputation": {
+        "mean_median": [],
+        "categorical": []
+    },
+    "encoding": {
+        "one_hot": [],
+        "rare_label": []
+    },
+    "transformations": {
+        "log": [],
+        "yeo_johnson": []
+    },
+    "scaling": "RobustScaler"
+}

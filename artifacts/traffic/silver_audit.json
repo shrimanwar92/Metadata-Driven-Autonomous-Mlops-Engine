@@ -1,0 +1,19 @@
+{
+    "drop_features": [
+        "Unnamed: 0"
+    ],
+    "subject_id": null,
+    "imputation": {
+        "mean_median": [],
+        "categorical": []
+    },
+    "encoding": {
+        "one_hot": [],
+        "rare_label": []
+    },
+    "transformations": {
+        "log": [],
+        "yeo_johnson": []
+    },
+    "scaling": "RobustScaler"
+}

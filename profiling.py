@@ -6,10 +6,18 @@ from constants import DATASET_PATH, ARTIFACTS_PATH, YDATA_REPORT_JSON
 # Ensure directories exist
 os.makedirs(ARTIFACTS_PATH, exist_ok=True)
 
-data = pd.read_csv(DATASET_PATH)
+data = pd.read_csv(DATASET_PATH, encoding="latin1")
 
 print("🔍 Phase 1: Profiling Raw Data...")
-profile = ProfileReport(data, minimal=True, explorative=True)
+profile = ProfileReport(data, 
+                        minimal=True, 
+                        explorative=True,
+                        correlations=None,
+                        interactions=None,
+                        missing_diagrams=None,
+                        samples=None,
+                        duplicates=None
+                        )
 
 # Generate reports for downstream scripts
 profile.to_file(f"{ARTIFACTS_PATH}/report.html")

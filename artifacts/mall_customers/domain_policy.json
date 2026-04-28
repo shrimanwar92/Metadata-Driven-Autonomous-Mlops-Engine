@@ -1,0 +1,13 @@
+{
+    "domain": "Retail",
+    "subject_id": "CustomerID",
+    "protected_features": [
+        "Gender",
+        "Age",
+        "Annual Income (k$)",
+        "Spending Score (1-100)"
+    ],
+    "technical_garbage": [
+        "CustomerID"
+    ]
+}

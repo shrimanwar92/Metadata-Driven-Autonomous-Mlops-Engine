@@ -1,0 +1,17 @@
+{
+    "KMeans": {
+        "optimal_k": 2,
+        "silhouette": 0.8043611829340803,
+        "ch_score": 6778.865645349772
+    },
+    "Agglomerative": {
+        "optimal_k": 2,
+        "silhouette": 0.8304484555668644,
+        "ch_score": 6044.767795916742
+    },
+    "GMM": {
+        "optimal_k": 2,
+        "silhouette": 0.16646115701677397,
+        "ch_score": 702.3766638319184
+    }
+}

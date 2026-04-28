@@ -1,0 +1,15 @@
+{
+    "domain": "Traffic",
+    "subject_id": null,
+    "protected_features": [
+        "vehicle_count",
+        "average_speed",
+        "lane_occupancy",
+        "flow_rate",
+        "time_of_day",
+        "waiting_time"
+    ],
+    "technical_garbage": [
+        "Unnamed: 0"
+    ]
+}

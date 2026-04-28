@@ -1,0 +1,20 @@
+{
+    "drop_features": [],
+    "subject_id": "CUST_ID",
+    "imputation": {
+        "mean_median": [
+            "CREDIT_LIMIT",
+            "MINIMUM_PAYMENTS"
+        ],
+        "categorical": []
+    },
+    "encoding": {
+        "one_hot": [],
+        "rare_label": []
+    },
+    "transformations": {
+        "log": [],
+        "yeo_johnson": []
+    },
+    "scaling": "RobustScaler"
+}

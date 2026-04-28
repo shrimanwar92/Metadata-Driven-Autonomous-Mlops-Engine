@@ -1,0 +1,29 @@
+{
+    "metadata": {
+        "entity_id": "generated_id",
+        "hopkins_statistic": 0.382,
+        "is_clusterable": false,
+        "suggested_algo": "HDBSCAN"
+    },
+    "numerical_transformations": {
+        "log_transform": [
+            "waiting_time"
+        ],
+        "yeo_johnson": [],
+        "scaling_method": "RobustScaler"
+    },
+    "selection_reduction": {
+        "correlation_threshold": 0.98,
+        "apply_pca": false,
+        "pca_variance": 0.95
+    },
+    "aggregations": {
+        "metrics": [
+            "vehicle_count",
+            "average_speed",
+            "lane_occupancy",
+            "flow_rate",
+            "waiting_time"
+        ]
+    }
+}

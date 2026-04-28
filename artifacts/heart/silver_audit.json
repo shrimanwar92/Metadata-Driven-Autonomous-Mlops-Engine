@@ -1,0 +1,31 @@
+{
+    "drop_features": [
+        "dataset"
+    ],
+    "subject_id": "id",
+    "imputation": {
+        "mean_median": [
+            "trestbps",
+            "chol",
+            "thalch",
+            "oldpeak",
+            "ca"
+        ],
+        "categorical": [
+            "fbs",
+            "restecg",
+            "exang",
+            "slope",
+            "thal"
+        ]
+    },
+    "encoding": {
+        "one_hot": [],
+        "rare_label": []
+    },
+    "transformations": {
+        "log": [],
+        "yeo_johnson": []
+    },
+    "scaling": "RobustScaler"
+}

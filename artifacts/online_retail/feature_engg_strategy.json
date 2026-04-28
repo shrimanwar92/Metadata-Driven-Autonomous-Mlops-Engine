@@ -1,0 +1,29 @@
+{
+    "interaction_priorities": [
+        {
+            "pair": [
+                "Quantity",
+                "UnitPrice"
+            ],
+            "logic": "multiplication",
+            "name": "Revenue"
+        }
+    ],
+    "semantic_groups": {
+        "Transaction Details": [
+            "Quantity",
+            "UnitPrice"
+        ],
+        "Geographic Context": [
+            "Country"
+        ],
+        "Monetary Value": [
+            "Revenue"
+        ]
+    },
+    "synthetic_targets": [
+        "Overall Spending Level (e.g., Total Revenue per Customer)",
+        "Price Sensitivity / Product Tier Preference (e.g., Average Unit Price per Customer)",
+        "Purchase Volume / Frequency (e.g., Total Quantity or Number of Transactions per Customer)"
+    ]
+}

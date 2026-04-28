@@ -1,0 +1,24 @@
+{
+    "drop_features": [
+        "InvoiceNo",
+        "StockCode",
+        "Description",
+        "InvoiceDate"
+    ],
+    "subject_id": "CustomerID",
+    "imputation": {
+        "mean_median": [],
+        "categorical": []
+    },
+    "encoding": {
+        "one_hot": [],
+        "rare_label": [
+            "Country"
+        ]
+    },
+    "transformations": {
+        "log": [],
+        "yeo_johnson": []
+    },
+    "scaling": "RobustScaler"
+}
