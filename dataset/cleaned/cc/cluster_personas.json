@@ -1,28 +1,50 @@
 [
     {
         "persona_id": 0,
-        "original_segments": [
-            "0"
-        ],
-        "population_share": "99.3%",
+        "population_share": "27.82%",
         "defining_traits": [
-            "Low MINIMUM_PAYMENTS",
-            "High CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio",
-            "Low BALANCE"
+            "High TENURE_per_PURCHASES_FREQUENCY",
+            "High BALANCE_FREQUENCY_per_PURCHASES_FREQUENCY",
+            "Low PURCHASES_FREQUENCY",
+            "High CASH_ADVANCE_FREQUENCY_per_INSTALLMENTS_PURCHASES",
+            "High CASH_ADVANCE_FREQUENCY_per_PURCHASES_FREQUENCY"
         ],
-        "summary": "Consolidated group representing 1 similar segments. Defined by Low MINIMUM_PAYMENTS, High CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio, Low BALANCE."
+        "logical_summary": "Group 0 captures users defined primarily by High TENURE_per_PURCHASES_FREQUENCY."
     },
     {
         "persona_id": 1,
-        "original_segments": [
-            "1"
-        ],
-        "population_share": "0.7%",
+        "population_share": "8.00%",
         "defining_traits": [
-            "High MINIMUM_PAYMENTS",
-            "Low CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio",
-            "High BALANCE"
+            "Extreme High PURCHASES_FREQUENCY_x_CASH_ADVANCE_FREQUENCY",
+            "Extreme High CASH_ADVANCE_x_PURCHASES_FREQUENCY",
+            "Extreme High PURCHASES_FREQUENCY_x_CASH_ADVANCE_TRX",
+            "Extreme High CASH_ADVANCE_x_PURCHASES_TRX",
+            "Extreme High CASH_ADVANCE_FREQUENCY_x_PURCHASES_TRX"
         ],
-        "summary": "Consolidated group representing 1 similar segments. Defined by High MINIMUM_PAYMENTS, Low CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio, High BALANCE."
+        "logical_summary": "Group 1 captures users defined primarily by Extreme High PURCHASES_FREQUENCY_x_CASH_ADVANCE_FREQUENCY."
+    },
+    {
+        "persona_id": 2,
+        "population_share": "9.10%",
+        "defining_traits": [
+            "Extreme High ONEOFF_PURCHASES_x_PURCHASES_FREQUENCY",
+            "Extreme High ONEOFF_PURCHASES_FREQUENCY_x_PURCHASES_TRX",
+            "Extreme High ONEOFF_PURCHASES_x_ONEOFF_PURCHASES_FREQUENCY",
+            "Extreme High ONEOFF_PURCHASES_FREQUENCY_x_PURCHASES_INSTALLMENTS_FREQUENCY",
+            "Extreme High ONEOFF_PURCHASES_per_CASH_ADVANCE"
+        ],
+        "logical_summary": "Group 2 captures users defined primarily by Extreme High ONEOFF_PURCHASES_x_PURCHASES_FREQUENCY."
+    },
+    {
+        "persona_id": 3,
+        "population_share": "55.08%",
+        "defining_traits": [
+            "High TENURE_per_CASH_ADVANCE",
+            "Low BALANCE_FREQUENCY_per_PURCHASES_FREQUENCY",
+            "Low TENURE_per_PURCHASES_FREQUENCY",
+            "Low CASH_ADVANCE_FREQUENCY",
+            "Low CASH_ADVANCE_FREQUENCY_per_TENURE"
+        ],
+        "logical_summary": "Group 3 captures users defined primarily by High TENURE_per_CASH_ADVANCE."
     }
 ]

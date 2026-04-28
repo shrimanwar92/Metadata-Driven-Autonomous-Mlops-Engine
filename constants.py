@@ -1,6 +1,6 @@
 from pathlib import Path
 
-DATASET = "mall_customers"
+DATASET = "cc"
 TARGET_COLUMN = None
 
 artifacts_path = Path(f"artifacts/{DATASET}")

@@ -1,20 +1,20 @@
 {
     "metadata": {
         "entity_id": "CUST_ID",
-        "mode": "profile",
-        "segmentation_columns": [
-            "BALANCE_FREQUENCY",
-            "PURCHASES_FREQUENCY",
-            "ONEOFF_PURCHASES_FREQUENCY",
-            "PURCHASES_INSTALLMENTS_FREQUENCY",
-            "CASH_ADVANCE_FREQUENCY",
-            "CASH_ADVANCE_TRX",
-            "PRC_FULL_PAYMENT",
-            "TENURE"
-        ]
+        "is_clusterable": true,
+        "total_base_metrics": 16
+    },
+    "numerical_transformations": {
+        "scaling_method": "RobustScaler"
+    },
+    "selection_reduction": {
+        "correlation_threshold": 0.98,
+        "apply_pca": true,
+        "target_variance": 0.99
     },
     "aggregations": {
         "metrics": [
+            "BALANCE",
             "BALANCE_FREQUENCY",
             "ONEOFF_PURCHASES",
             "INSTALLMENTS_PURCHASES",
@@ -26,11 +26,10 @@
             "CASH_ADVANCE_TRX",
             "PURCHASES_TRX",
             "CREDIT_LIMIT",
+            "PAYMENTS",
+            "MINIMUM_PAYMENTS",
             "PRC_FULL_PAYMENT",
             "TENURE"
-        ],
-        "methods": [
-            "identity"
         ]
     }
 }
