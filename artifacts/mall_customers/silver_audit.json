@@ -1,14 +1,14 @@
 {
-    "drop_features": [
-        "CustomerID"
-    ],
+    "drop_features": [],
     "subject_id": "CustomerID",
     "imputation": {
         "mean_median": [],
         "categorical": []
     },
     "encoding": {
-        "one_hot": [],
+        "one_hot": [
+            "Gender"
+        ],
         "rare_label": []
     },
     "transformations": {

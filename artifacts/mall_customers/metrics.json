@@ -1,17 +1,27 @@
 {
-    "KMeans": {
-        "optimal_k": 7,
-        "silhouette": 0.4379518471413818,
-        "ch_score": 124.67658219519322
+    "suggested_k": 5,
+    "metrics": {
+        "elbow_k": 5,
+        "best_silhouette_k": 2,
+        "silhouette_scores": {
+            "2": 0.8264291948362669,
+            "3": 0.4933244371888803,
+            "4": 0.514576982851484,
+            "5": 0.41451047421794185,
+            "6": 0.43428200403851674,
+            "7": 0.4402284183435633,
+            "8": 0.43962114054684065,
+            "9": 0.35361647190478296,
+            "10": 0.36641425288517565
+        }
     },
-    "Agglomerative": {
-        "optimal_k": 7,
-        "silhouette": 0.42003572732059075,
-        "ch_score": 108.44208087684423
-    },
-    "GMM": {
-        "optimal_k": 7,
-        "silhouette": 0.43949889841788226,
-        "ch_score": 124.31203946344387
-    }
+    "features_used": [
+        "Age",
+        "Annual Income (k$)",
+        "Spending Score (1-100)",
+        "Gender_Male",
+        "weighted_spending_power",
+        "income_absorption_rate",
+        "age_spending_velocity"
+    ]
 }

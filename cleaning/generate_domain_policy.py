@@ -12,16 +12,16 @@ from constants import PROFILER_REPORT_PATH, DOMAIN_POLICY_PATH
 
 load_dotenv()
 
-def generate_domain_policy(max_retries=5):
+def get_domain_policy_from_llm(max_retries=5):
     """
     Generates a domain policy using Gemini 1.5 Flash with exponential backoff 
     to mitigate rate limiting.
     """
     # 1. Initialize Gemini Client
     api_key = os.getenv("MDAME_API_KEY")
+    
     if not api_key:
         raise ValueError("MDAME_API_KEY not found in environment variables.")
-        
     client = genai.Client(api_key=api_key)
     
     # 2. Extract schema from Profiler Report
@@ -84,13 +84,8 @@ def generate_domain_policy(max_retries=5):
                 contents=prompt
             )
 
-            # 5. Parse and Save Policy
+            # 5. Parse and return Policy
             policy = json.loads(response.text)
-            
-            with open(DOMAIN_POLICY_PATH, 'w') as f:
-                json.dump(policy, f, indent=4)
-            
-            print(f"✅ Domain Policy Saved: {policy.get('domain', 'Unknown').upper()} discovered.")
             return policy
 
         except Exception as e:
@@ -104,6 +99,20 @@ def generate_domain_policy(max_retries=5):
                 raise e
 
     raise Exception("Max retries exceeded. Please check your AI Studio quota.")
+
+def generate_domain_policy():
+    if os.path.exists(DOMAIN_POLICY_PATH):
+        with open(DOMAIN_POLICY_PATH, "r") as f:
+            policy = json.load(f)
+    else:
+        policy = get_domain_policy_from_llm()
+
+    with open(DOMAIN_POLICY_PATH, 'w') as f:
+        json.dump(policy, f, indent=4)
+    
+    print(f"✅ Domain Policy Saved: {policy.get('domain', 'Unknown').upper()} discovered.")
+        
+    
 
 if __name__ == "__main__":
     generate_domain_policy()

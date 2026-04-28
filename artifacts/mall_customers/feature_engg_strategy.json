@@ -1,0 +1,29 @@
+{
+ "interaction_priorities": [
+ {
+  "pair": ["Annual Income (k$)", "Spending Score (1-100)"],
+  "logic": "multiplication",
+  "name": "weighted_spending_power"
+   },
+   {
+   "pair": ["Spending Score (1-100)", "Annual Income (k$)"],
+   "logic": "ratio",
+   "name": "income_absorption_rate"
+  },
+  {
+  "pair": ["Age", "Spending Score (1-100)"],
+  "logic": "ratio",
+  "name": "age_spending_velocity"
+  }
+  ],
+  "semantic_groups": {
+   "customer_demographics": ["Age", "Gender_Male", "Gender_Female"],
+   "financial_standing": ["Annual Income (k$)"],
+   "behavioral_engagement": ["Spending Score (1-100)"]
+  },
+  "synthetic_targets": [
+  "Financial Efficiency: A measure of how much a customer spends relative to their earning capacity, identifying 'aspirational' vs 'frugal' personas.",
+  "Life-Stage Value: A dimension combining Age and Income to segment customers into 'Emerging Youth', 'Established Professional', or 'Conservative Senior' categories.",
+  "Retail Yield Potential: A composite score identifying high-income individuals with low current engagement for targeted conversion campaigns."
+  ]
+ }

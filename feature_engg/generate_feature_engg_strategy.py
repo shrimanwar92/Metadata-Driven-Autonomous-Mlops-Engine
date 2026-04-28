@@ -80,7 +80,7 @@ def generate_feature_engg_strategy(max_retries=5):
             print(f"🧠 Generating Semantic Strategy (Attempt {attempt + 1}/{max_retries})...")
             
             response = client.models.generate_content(
-                model="gemini-2.5-flash", 
+                model="gemini-3.0-flash-live", 
                 config=types.GenerateContentConfig(
                     system_instruction=system_instruction,
                     response_mime_type="application/json",

@@ -1,86 +1,47 @@
-[
-    {
-        "persona_id": 0,
-        "population_share": "25.79%",
-        "defining_traits": [
-            "High Age",
-            "High Age_x_Spending Score (1-100)",
-            "Low Annual Income (k$)_per_Age",
-            "Low Spending Score (1-100)_per_Age",
-            "High Age_x_Annual Income (k$)"
-        ],
-        "logical_summary": "Group 0 captures patients/customers defined primarily by High Age."
+{
+    "0": {
+        "Age": 0.3189143341815098,
+        "Annual Income (k$)": -0.04527867823904633,
+        "Spending Score (1-100)": -0.2985581000848176,
+        "Gender_Male": 0.4198473282442748,
+        "weighted_spending_power": -0.18764703058236112,
+        "income_absorption_rate": -0.28920244500508274,
+        "age_spending_velocity": 0.6917870063289708
     },
-    {
-        "persona_id": 1,
-        "population_share": "19.47%",
-        "defining_traits": [
-            "High Annual Income (k$)_x_Spending Score (1-100)",
-            "High Spending Score (1-100)",
-            "High Annual Income (k$)",
-            "High Annual Income (k$)_per_Age",
-            "High Spending Score (1-100)_per_Age"
-        ],
-        "logical_summary": "Group 1 captures patients/customers defined primarily by High Annual Income (k$)_x_Spending Score (1-100)."
+    "1": {
+        "Age": -0.5281803542673107,
+        "Annual Income (k$)": -1.0190589636688505,
+        "Spending Score (1-100)": 0.6933788007956806,
+        "Gender_Male": 0.43478260869565216,
+        "weighted_spending_power": -0.364145971611107,
+        "income_absorption_rate": 4.980077232058053,
+        "age_spending_velocity": -0.508022987152075
     },
-    {
-        "persona_id": 2,
-        "population_share": "10.53%",
-        "defining_traits": [
-            "Extreme High Spending Score (1-100)_per_Annual Income (k$)",
-            "High Spending Score (1-100)_per_Age",
-            "Low Annual Income (k$)",
-            "Low Age_x_Annual Income (k$)",
-            "High Spending Score (1-100)"
-        ],
-        "logical_summary": "Group 2 captures patients/customers defined primarily by Extreme High Spending Score (1-100)_per_Annual Income (k$)."
+    "2": {
+        "Age": -0.02469135802469135,
+        "Annual Income (k$)": 0.4520547945205479,
+        "Spending Score (1-100)": -1.2810457516339868,
+        "Gender_Male": 1.0,
+        "weighted_spending_power": -1.3999428244711265,
+        "income_absorption_rate": -1.7593468023422023,
+        "age_spending_velocity": 34.78002275027218
     },
-    {
-        "persona_id": 3,
-        "population_share": "1.05%",
-        "defining_traits": [
-            "Extreme High Annual Income (k$)_per_Spending Score (1-100)",
-            "Extreme High Age_per_Spending Score (1-100)",
-            "Low Spending Score (1-100)",
-            "Low Age_x_Spending Score (1-100)",
-            "Low Spending Score (1-100)_per_Age"
-        ],
-        "logical_summary": "Group 3 captures patients/customers defined primarily by Extreme High Annual Income (k$)_per_Spending Score (1-100)."
+    "3": {
+        "Age": 0.9876543209876543,
+        "Annual Income (k$)": -0.6876712328767123,
+        "Spending Score (1-100)": -1.1973856209150326,
+        "Gender_Male": 0.6,
+        "weighted_spending_power": -1.3520297312750142,
+        "income_absorption_rate": -1.5120798834582936,
+        "age_spending_velocity": 13.233343136729236
     },
-    {
-        "persona_id": 4,
-        "population_share": "15.26%",
-        "defining_traits": [
-            "Low Spending Score (1-100)",
-            "Low Age_x_Spending Score (1-100)",
-            "High Age_x_Annual Income (k$)",
-            "High Annual Income (k$)",
-            "Low Spending Score (1-100)_per_Age"
-        ],
-        "logical_summary": "Group 4 captures patients/customers defined primarily by Low Spending Score (1-100)."
-    },
-    {
-        "persona_id": 5,
-        "population_share": "8.95%",
-        "defining_traits": [
-            "High Age_per_Annual Income (k$)",
-            "Low Annual Income (k$)",
-            "Low Annual Income (k$)_per_Age",
-            "Low Spending Score (1-100)",
-            "Low Annual Income (k$)_x_Spending Score (1-100)"
-        ],
-        "logical_summary": "Group 5 captures patients/customers defined primarily by High Age_per_Annual Income (k$)."
-    },
-    {
-        "persona_id": 6,
-        "population_share": "18.95%",
-        "defining_traits": [
-            "Low Age",
-            "Low Age_x_Annual Income (k$)",
-            "High Annual Income (k$)_per_Age",
-            "Low Age_x_Spending Score (1-100)",
-            "Low Age_per_Annual Income (k$)"
-        ],
-        "logical_summary": "Group 6 captures patients/customers defined primarily by Low Age."
+    "4": {
+        "Age": -0.16334283000949665,
+        "Annual Income (k$)": 0.6859852476290832,
+        "Spending Score (1-100)": 0.8399530752471929,
+        "Gender_Male": 0.46153846153846156,
+        "weighted_spending_power": 2.6157291345970592,
+        "income_absorption_rate": 0.17986177359184938,
+        "age_spending_velocity": -0.4537559303227449
     }
-]
+}

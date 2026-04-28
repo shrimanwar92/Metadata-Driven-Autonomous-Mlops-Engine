@@ -1,22 +1,51 @@
 {
-    "metadata": {
-        "entity_id": "CustomerID",
-        "is_clusterable": true,
-        "total_base_metrics": 3
-    },
-    "numerical_transformations": {
-        "scaling_method": "RobustScaler"
-    },
-    "selection_reduction": {
-        "correlation_threshold": 0.98,
-        "apply_pca": true,
-        "target_variance": 0.99
-    },
-    "aggregations": {
-        "metrics": [
-            "Age",
-            "Annual Income (k$)",
-            "Spending Score (1-100)"
+    "subject_id": "CustomerID",
+    "protected_features": [
+        "Gender",
+        "Age",
+        "Annual Income (k$)",
+        "Spending Score (1-100)"
+    ],
+    "priority_interactions": [
+        {
+            "pair": [
+                "Annual Income (k$)",
+                "Spending Score (1-100)"
+            ],
+            "logic": "multiplication",
+            "name": "weighted_spending_power"
+        },
+        {
+            "pair": [
+                "Spending Score (1-100)",
+                "Annual Income (k$)"
+            ],
+            "logic": "ratio",
+            "name": "income_absorption_rate"
+        },
+        {
+            "pair": [
+                "Age",
+                "Spending Score (1-100)"
+            ],
+            "logic": "ratio",
+            "name": "age_spending_velocity"
+        }
+    ],
+    "base_metrics": [
+        "Age",
+        "Annual Income (k$)",
+        "Spending Score (1-100)",
+        "Gender_Male",
+        "Gender_Female"
+    ],
+    "selection_params": {
+        "correlation_threshold": 0.95,
+        "force_keep": [
+            "weighted_spending_power",
+            "income_absorption_rate",
+            "age_spending_velocity"
         ]
-    }
+    },
+    "scaling": "RobustScaler"
 }
