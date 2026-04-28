@@ -1,24 +1,21 @@
 {
     "metadata": {
         "entity_id": "id",
-        "mode": "profile",
-        "segmentation_columns": [
-            "age",
-            "sex",
-            "dataset",
-            "cp",
-            "trestbps",
-            "chol",
-            "fbs",
-            "restecg",
-            "thalch",
-            "exang",
+        "is_clusterable": true,
+        "total_base_metrics": 6
+    },
+    "numerical_transformations": {
+        "log_transform": [],
+        "yeo_johnson": [
             "oldpeak",
-            "slope",
-            "ca",
-            "thal"
+            "ca"
         ],
-        "row_count": 874
+        "scaling_method": "StandardScaler"
+    },
+    "selection_reduction": {
+        "correlation_threshold": 0.98,
+        "apply_pca": true,
+        "target_variance": 0.99
     },
     "aggregations": {
         "metrics": [
@@ -28,9 +25,6 @@
             "thalch",
             "oldpeak",
             "ca"
-        ],
-        "methods": [
-            "identity"
         ]
     }
 }

@@ -1,0 +1,28 @@
+[
+    {
+        "persona_id": 0,
+        "original_segments": [
+            "0"
+        ],
+        "population_share": "99.3%",
+        "defining_traits": [
+            "Low MINIMUM_PAYMENTS",
+            "High CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio",
+            "Low BALANCE"
+        ],
+        "summary": "Consolidated group representing 1 similar segments. Defined by Low MINIMUM_PAYMENTS, High CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio, Low BALANCE."
+    },
+    {
+        "persona_id": 1,
+        "original_segments": [
+            "1"
+        ],
+        "population_share": "0.7%",
+        "defining_traits": [
+            "High MINIMUM_PAYMENTS",
+            "Low CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio",
+            "High BALANCE"
+        ],
+        "summary": "Consolidated group representing 1 similar segments. Defined by High MINIMUM_PAYMENTS, Low CREDIT_LIMIT_to_MINIMUM_PAYMENTS_ratio, High BALANCE."
+    }
+]

@@ -1,0 +1,86 @@
+[
+    {
+        "persona_id": 0,
+        "population_share": "25.79%",
+        "defining_traits": [
+            "High Age",
+            "High Age_x_Spending Score (1-100)",
+            "Low Annual Income (k$)_per_Age",
+            "Low Spending Score (1-100)_per_Age",
+            "High Age_x_Annual Income (k$)"
+        ],
+        "logical_summary": "Group 0 captures patients/customers defined primarily by High Age."
+    },
+    {
+        "persona_id": 1,
+        "population_share": "19.47%",
+        "defining_traits": [
+            "High Annual Income (k$)_x_Spending Score (1-100)",
+            "High Spending Score (1-100)",
+            "High Annual Income (k$)",
+            "High Annual Income (k$)_per_Age",
+            "High Spending Score (1-100)_per_Age"
+        ],
+        "logical_summary": "Group 1 captures patients/customers defined primarily by High Annual Income (k$)_x_Spending Score (1-100)."
+    },
+    {
+        "persona_id": 2,
+        "population_share": "10.53%",
+        "defining_traits": [
+            "Extreme High Spending Score (1-100)_per_Annual Income (k$)",
+            "High Spending Score (1-100)_per_Age",
+            "Low Annual Income (k$)",
+            "Low Age_x_Annual Income (k$)",
+            "High Spending Score (1-100)"
+        ],
+        "logical_summary": "Group 2 captures patients/customers defined primarily by Extreme High Spending Score (1-100)_per_Annual Income (k$)."
+    },
+    {
+        "persona_id": 3,
+        "population_share": "1.05%",
+        "defining_traits": [
+            "Extreme High Annual Income (k$)_per_Spending Score (1-100)",
+            "Extreme High Age_per_Spending Score (1-100)",
+            "Low Spending Score (1-100)",
+            "Low Age_x_Spending Score (1-100)",
+            "Low Spending Score (1-100)_per_Age"
+        ],
+        "logical_summary": "Group 3 captures patients/customers defined primarily by Extreme High Annual Income (k$)_per_Spending Score (1-100)."
+    },
+    {
+        "persona_id": 4,
+        "population_share": "15.26%",
+        "defining_traits": [
+            "Low Spending Score (1-100)",
+            "Low Age_x_Spending Score (1-100)",
+            "High Age_x_Annual Income (k$)",
+            "High Annual Income (k$)",
+            "Low Spending Score (1-100)_per_Age"
+        ],
+        "logical_summary": "Group 4 captures patients/customers defined primarily by Low Spending Score (1-100)."
+    },
+    {
+        "persona_id": 5,
+        "population_share": "8.95%",
+        "defining_traits": [
+            "High Age_per_Annual Income (k$)",
+            "Low Annual Income (k$)",
+            "Low Annual Income (k$)_per_Age",
+            "Low Spending Score (1-100)",
+            "Low Annual Income (k$)_x_Spending Score (1-100)"
+        ],
+        "logical_summary": "Group 5 captures patients/customers defined primarily by High Age_per_Annual Income (k$)."
+    },
+    {
+        "persona_id": 6,
+        "population_share": "18.95%",
+        "defining_traits": [
+            "Low Age",
+            "Low Age_x_Annual Income (k$)",
+            "High Annual Income (k$)_per_Age",
+            "Low Age_x_Spending Score (1-100)",
+            "Low Age_per_Annual Income (k$)"
+        ],
+        "logical_summary": "Group 6 captures patients/customers defined primarily by Low Age."
+    }
+]

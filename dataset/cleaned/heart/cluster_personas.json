@@ -1,24 +1,26 @@
 [
     {
-        "cluster_id": 0,
-        "internal_name": "Segment_0",
-        "population_share": "80.8%",
+        "persona_id": 0,
+        "population_share": "18.99%",
         "defining_traits": [
-            "High chol",
-            "Low age_to_thalch_ratio",
-            "High thalch"
+            "Extreme High age_per_chol",
+            "Extreme High trestbps_per_chol",
+            "Extreme High thalch_per_chol",
+            "Low chol",
+            "Low chol_per_trestbps"
         ],
-        "description": "This group is primarily defined by having High chol and Low age_to_thalch_ratio relative to the average data point."
+        "logical_summary": "Group 0 captures patients/customers defined primarily by Extreme High age_per_chol."
     },
     {
-        "cluster_id": 1,
-        "internal_name": "Segment_1",
-        "population_share": "19.2%",
+        "persona_id": 1,
+        "population_share": "81.01%",
         "defining_traits": [
-            "Significantly Low chol",
-            "High age_to_thalch_ratio",
-            "Low thalch"
+            "Low age_per_chol",
+            "Low trestbps_per_chol",
+            "Low thalch_per_chol",
+            "Low chol",
+            "Low chol_per_trestbps"
         ],
-        "description": "This group is primarily defined by having Significantly Low chol and High age_to_thalch_ratio relative to the average data point."
+        "logical_summary": "Group 1 captures patients/customers defined primarily by Low age_per_chol."
     }
 ]

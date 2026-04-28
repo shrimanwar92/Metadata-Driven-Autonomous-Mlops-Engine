@@ -1,22 +1,22 @@
 {
     "metadata": {
         "entity_id": "CustomerID",
-        "mode": "profile",
-        "segmentation_columns": [
-            "Gender",
-            "Age",
-            "Annual Income (k$)",
-            "Spending Score (1-100)"
-        ]
+        "is_clusterable": true,
+        "total_base_metrics": 3
+    },
+    "numerical_transformations": {
+        "scaling_method": "RobustScaler"
+    },
+    "selection_reduction": {
+        "correlation_threshold": 0.98,
+        "apply_pca": true,
+        "target_variance": 0.99
     },
     "aggregations": {
         "metrics": [
             "Age",
             "Annual Income (k$)",
             "Spending Score (1-100)"
-        ],
-        "methods": [
-            "identity"
         ]
     }
 }
