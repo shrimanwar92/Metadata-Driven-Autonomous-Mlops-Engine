@@ -1,0 +1,24 @@
+[
+    {
+        "cluster_id": 0,
+        "internal_name": "Segment_0",
+        "population_share": "80.8%",
+        "defining_traits": [
+            "High chol",
+            "Low age_to_thalch_ratio",
+            "High thalch"
+        ],
+        "description": "This group is primarily defined by having High chol and Low age_to_thalch_ratio relative to the average data point."
+    },
+    {
+        "cluster_id": 1,
+        "internal_name": "Segment_1",
+        "population_share": "19.2%",
+        "defining_traits": [
+            "Significantly Low chol",
+            "High age_to_thalch_ratio",
+            "Low thalch"
+        ],
+        "description": "This group is primarily defined by having Significantly Low chol and High age_to_thalch_ratio relative to the average data point."
+    }
+]

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-DATASET = "heart"
+DATASET = "mall_customers"
 TARGET_COLUMN = None
 
 artifacts_path = Path(f"artifacts/{DATASET}")
@@ -17,6 +17,7 @@ CLEANED_DATASET_PATH = f"{cleaned_path}/silver_cleaned_data.csv"
 GOLD_DATASET_PATH = f"{cleaned_path}/gold_feature_engineered_data.csv"
 JOBLIB_PIPELINE_PATH = f"{cleaned_path}/{DATASET}.joblib"
 BEST_MODEL_PATH = f"{cleaned_path}/{DATASET}_model.joblib"
+CLUSTER_PERSONAS_PATH = f"{cleaned_path}/cluster_personas.json"
 
 # Added metadata paths
 PRE_CLEAN_AUDIT_REPORT = f"{ARTIFACTS_PATH}/pre_clean_audit.json"
