@@ -54,7 +54,8 @@ def get_domain_policy_from_llm(max_retries=5):
        - These are "High-Signal" behavioral columns critical for clustering in this domain.
        - Examples: 'Spending Score' for Retail, 'heart_rate' for Clinical, 'flow_rate' for Traffic.
     4. Identify 'technical_garbage': 
-       - Columns with zero entropy for clustering (UUIDs, internal timestamps, row indexes).
+       - Columns with zero entropy or strictly sequential values (e.g., Unnamed: 0, index, row_id).
+       - Explicitly include any column that acts as a sequence in the file.
     5. Logic for 'Drop vs. Keep':
        - If a column is a redundant string (like "Name" or "Email"), suggest it for dropping.
        - If a column represents a category (like "Gender" or "Region"), keep it for encoding.

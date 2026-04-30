@@ -6,7 +6,11 @@ import sys
 import joblib
 from sklearn.cluster import KMeans
 from sklearn.metrics import silhouette_score
+from sklearn.decomposition import PCA
+from sklearn.preprocessing import StandardScaler
 from kneed import KneeLocator
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Add parent directory to path to import constants
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -18,6 +22,34 @@ from constants import (
     CLUSTER_PERSONAS_PATH
 )
 
+def generate_cluster_plot(X, labels, output_path):
+    """Generates a PCA-based 2D visualization of the clusters."""
+    print("🎨 Generating cluster visualization...")
+    scaler = StandardScaler()
+    X_scaled = scaler.fit_transform(X)
+    
+    pca = PCA(n_components=2)
+    components = pca.fit_transform(X_scaled)
+    
+    pca_df = pd.DataFrame(data=components, columns=['PC1', 'PC2'])
+    pca_df['Cluster'] = labels
+    
+    plt.figure(figsize=(10, 6))
+    sns.scatterplot(x='PC1', y='PC2', hue='Cluster', palette='viridis', data=pca_df, s=100, alpha=0.7, edgecolor='w')
+    
+    var_exp = pca.explained_variance_ratio_
+    plt.title('clustering image', fontsize=15)
+    plt.xlabel(f'PC1 ({var_exp[0]*100:.1f}% variance)')
+    plt.ylabel(f'PC2 ({var_exp[1]*100:.1f}% variance)')
+    plt.legend(title='Cluster', bbox_to_anchor=(1.05, 1), loc='upper left')
+    plt.grid(True, linestyle='--', alpha=0.6)
+    plt.tight_layout()
+    
+    plot_file = output_path.replace('_labeled.csv', '_viz.png')
+    plt.savefig(plot_file)
+    plt.close()
+    print(f"📊 Visualization saved to: {plot_file}")
+
 def run_training_pipeline():
     print("🧠 Phase 6: Model Audit (Brain)")
     
@@ -25,6 +57,14 @@ def run_training_pipeline():
     df = pd.read_csv(GOLD_DATASET_PATH)
     with open(GOLD_AUDIT_REPORT, 'r') as f:
         gold_plan = json.load(f)
+
+    # AUTO-FILTER: Remove any column that is 100% unique (ID-like)
+    for col in df.columns:
+        if df[col].nunique() == len(df) and df[col].dtype in ['int64', 'float64']:
+            print(f"🚫 Dropping potential ID leakage: {col}")
+            df = df.drop(columns=[col])
+
+    X = df.select_dtypes(include=[np.number]).dropna()
 
     # Prepare features
     sid = gold_plan.get("subject_id")
@@ -99,9 +139,15 @@ def run_training_pipeline():
     # 5. Persona Profiling (Centroid Analysis)
     X_results = X.copy()
     X_results['Cluster'] = final_labels
+    means = X_results.groupby('Cluster').mean()
+    personas = {}
+    for cluster_id, row in means.iterrows():
+        traits = {k: "High" if v > 0.5 else "Low" if v < -0.5 else "Average" 
+                  for k, v in row.to_dict().items()}
+        personas[str(cluster_id)] = {"raw_means": row.to_dict(), "traits": traits}
     
     # Calculate the mean of each feature per cluster to define "Personas"
-    personas = X_results.groupby('Cluster').mean().to_dict(orient='index')
+    #personas = X_results.groupby('Cluster').mean().to_dict(orient='index')
 
     # 6. Save Final Artifacts
     joblib.dump(final_model, BEST_MODEL_PATH)
@@ -118,9 +164,17 @@ def run_training_pipeline():
     print(f"🏆 Training Complete!")
     print(f"📂 Labeled Data: {output_path}")
 
-    # Visual summary
-    for cluster_id, traits in personas.items():
-        top_trait = max(traits, key=traits.get)
+    # 7. Integrated Visualization
+    generate_cluster_plot(X, final_labels, output_path)
+
+    # Visual summary fix
+    for cluster_id, data in personas.items():
+        # Target only the numeric values for finding the top trait
+        # If 'data' is the nested dict from my previous suggestion:
+        stats = data.get('raw_means', data) 
+        
+        # Find the feature with the highest value in this cluster
+        top_trait = max(stats, key=stats.get)
         print(f"   📍 Cluster {cluster_id}: Dominant Signal -> {top_trait}")
 
 if __name__ == "__main__":

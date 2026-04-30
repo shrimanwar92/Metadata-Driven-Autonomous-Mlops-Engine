@@ -2,6 +2,7 @@ import pandas as pd
 import json
 import os
 import sys
+import numpy as np
 from sklearn.pipeline import Pipeline
 from feature_engine.imputation import MeanMedianImputer, CategoricalImputer
 from feature_engine.encoding import OneHotEncoder, RareLabelEncoder
@@ -45,8 +46,25 @@ def run_clustering_cleaning():
         steps.append(('yeo_trans', YeoJohnsonTransformer(variables=contract["transformations"]["yeo_johnson"])))
 
     # Run Pipeline
-    cleaning_pipe = Pipeline(steps)
-    df_silver = cleaning_pipe.fit_transform(df)
+    if not steps:
+        print("💡 No cleaning steps required by the audit. Using identity data.")
+        df_silver = df.copy()
+    else:
+        # Check if the pipeline has at least one valid step
+        cleaning_pipe = Pipeline(steps)
+        try:
+            df_silver = cleaning_pipe.fit_transform(df)
+            # If result is a numpy array, convert back to DataFrame
+            if isinstance(df_silver, np.ndarray):
+                df_silver = pd.DataFrame(df_silver, columns=df.columns)
+        except IndexError:
+            print("⚠️ Pipeline initialization failed. Falling back to raw data.")
+            df_silver = df.copy()
+
+    # 5. Execution: Drop remaining non-numeric IDs before training
+    # This prevents 'Unnamed: 0' from leaking into the Gold layer
+    cols_to_drop = [c for c in ['Unnamed: 0', 'Unnamed: 0.1', 'index'] if c in df_silver.columns]
+    df_silver = df_silver.drop(columns=cols_to_drop)
 
     # 5. Execution: Anchor ID to Index
     subject_id = contract.get("subject_id")

@@ -34,6 +34,9 @@ def generate_feature_engg_strategy(max_retries=5):
     with open(DOMAIN_POLICY_PATH, 'r') as f:
         policy = json.load(f)
 
+    report = json.dumps(json.load(f), separators=(",", ":"))
+    policy = json.dumps(policy, separators=(",", ":"))
+
     variables = report.get('variables', {})
     domain_name = policy.get("domain", "Unknown")
     protected = policy.get("protected_features", [])
@@ -80,7 +83,7 @@ def generate_feature_engg_strategy(max_retries=5):
             print(f"🧠 Generating Semantic Strategy (Attempt {attempt + 1}/{max_retries})...")
             
             response = client.models.generate_content(
-                model="gemini-3.0-flash-live", 
+                model="gemini-2.5-flash", 
                 config=types.GenerateContentConfig(
                     system_instruction=system_instruction,
                     response_mime_type="application/json",

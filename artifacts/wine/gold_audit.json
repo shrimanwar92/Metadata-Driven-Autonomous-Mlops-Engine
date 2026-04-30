@@ -1,0 +1,78 @@
+{
+    "subject_id": null,
+    "protected_features": [
+        "Alcohol",
+        "Malic_Acid",
+        "Ash",
+        "Ash_Alcanity",
+        "Magnesium",
+        "Total_Phenols",
+        "Flavanoids",
+        "Nonflavanoid_Phenols",
+        "Proanthocyanins",
+        "Color_Intensity",
+        "Hue",
+        "OD280",
+        "Proline"
+    ],
+    "priority_interactions": [
+        {
+            "pair": [
+                "Flavanoids",
+                "Total_Phenols"
+            ],
+            "logic": "ratio",
+            "name": "Flavanoid_Ratio"
+        },
+        {
+            "pair": [
+                "Ash_Alcanity",
+                "Ash"
+            ],
+            "logic": "ratio",
+            "name": "Ash_Alcanity_Index"
+        },
+        {
+            "pair": [
+                "Color_Intensity",
+                "Hue"
+            ],
+            "logic": "ratio",
+            "name": "Color_Saturation_Index"
+        },
+        {
+            "pair": [
+                "Proanthocyanins",
+                "Flavanoids"
+            ],
+            "logic": "ratio",
+            "name": "Proanthocyanin_Flavanoid_Ratio"
+        }
+    ],
+    "base_metrics": [
+        "observation_id",
+        "Alcohol",
+        "Malic_Acid",
+        "Ash",
+        "Ash_Alcanity",
+        "Magnesium",
+        "Total_Phenols",
+        "Flavanoids",
+        "Nonflavanoid_Phenols",
+        "Proanthocyanins",
+        "Color_Intensity",
+        "Hue",
+        "OD280",
+        "Proline"
+    ],
+    "selection_params": {
+        "correlation_threshold": 0.95,
+        "force_keep": [
+            "Flavanoid_Ratio",
+            "Ash_Alcanity_Index",
+            "Color_Saturation_Index",
+            "Proanthocyanin_Flavanoid_Ratio"
+        ]
+    },
+    "scaling": "RobustScaler"
+}

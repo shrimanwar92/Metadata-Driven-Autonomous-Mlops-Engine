@@ -1,0 +1,20 @@
+{
+    "domain": "Chemical Analysis",
+    "subject_id": null,
+    "protected_features": [
+        "Alcohol",
+        "Malic_Acid",
+        "Ash",
+        "Ash_Alcanity",
+        "Magnesium",
+        "Total_Phenols",
+        "Flavanoids",
+        "Nonflavanoid_Phenols",
+        "Proanthocyanins",
+        "Color_Intensity",
+        "Hue",
+        "OD280",
+        "Proline"
+    ],
+    "technical_garbage": []
+}
