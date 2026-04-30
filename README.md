@@ -10,4 +10,4 @@ python feature_engg/generate_feature_engg_strategy.py
 
 python feature_engg/run_clustering_pipeline.py
 
-training/train_clustering.py
+python training/train_clustering.py
