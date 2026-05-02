@@ -1,0 +1,43 @@
+{
+    "subject_id": "Country",
+    "recommended_algorithm": "GMM",
+    "priority_interactions": [
+        {
+            "pair": [
+                "Quantity",
+                "Price"
+            ],
+            "logic": "multiplication",
+            "name": "Total_Transaction_Value",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        }
+    ],
+    "base_metrics": [
+        "Quantity",
+        "Price"
+    ],
+    "aggregation_strategy": {
+        "columns_to_sum": [
+            "Quantity",
+            "Total_Transaction_Value"
+        ],
+        "columns_to_mean": [
+            "Price"
+        ],
+        "columns_to_mode": []
+    },
+    "selection_params": {
+        "correlation_threshold": 0.85,
+        "variance_threshold": 0.01,
+        "force_keep": [
+            "Total_Transaction_Value"
+        ]
+    },
+    "preprocessing": {
+        "scaler": "PowerTransformer",
+        "imputation": "median",
+        "encoding": "one-hot",
+        "pca": {}
+    }
+}

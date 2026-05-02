@@ -1,0 +1,92 @@
+{
+    "0": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Average",
+            "Total_Transaction_Value": "Average"
+        },
+        "sample_size": 125709,
+        "mean_certainty": 0.8894132601771922
+    },
+    "1": {
+        "dominant_traits": {
+            "Quantity": "High",
+            "Price": "Average",
+            "Total_Transaction_Value": "Low"
+        },
+        "sample_size": 2,
+        "mean_certainty": 1.0
+    },
+    "2": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Low",
+            "Total_Transaction_Value": "High"
+        },
+        "sample_size": 2,
+        "mean_certainty": 1.0
+    },
+    "3": {
+        "dominant_traits": {
+            "Quantity": "Low",
+            "Price": "Average",
+            "Total_Transaction_Value": "High"
+        },
+        "sample_size": 2,
+        "mean_certainty": 1.0
+    },
+    "4": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Average",
+            "Total_Transaction_Value": "High"
+        },
+        "sample_size": 5300,
+        "mean_certainty": 0.9988914981453384
+    },
+    "5": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Average",
+            "Total_Transaction_Value": "Average"
+        },
+        "sample_size": 119694,
+        "mean_certainty": 0.9787148239359149
+    },
+    "6": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "High",
+            "Total_Transaction_Value": "Low"
+        },
+        "sample_size": 11844,
+        "mean_certainty": 0.963169773379503
+    },
+    "7": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Average",
+            "Total_Transaction_Value": "Average"
+        },
+        "sample_size": 215623,
+        "mean_certainty": 0.9349530271908203
+    },
+    "8": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Average",
+            "Total_Transaction_Value": "High"
+        },
+        "sample_size": 41035,
+        "mean_certainty": 0.9555725205800928
+    },
+    "9": {
+        "dominant_traits": {
+            "Quantity": "Average",
+            "Price": "Average",
+            "Total_Transaction_Value": "Low"
+        },
+        "sample_size": 22699,
+        "mean_certainty": 0.9593874730703927
+    }
+}

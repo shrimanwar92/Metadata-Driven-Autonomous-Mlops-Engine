@@ -57,6 +57,7 @@ def generate_feature_engg_strategy(max_retries=5):
     1. Identify the 'subject_id' (the entity we are clustering). 
     2. ANTI-LEAKAGE RULE: If a column has a 1:1 relationship with rows or is perfectly correlated with the index (e.g., 'generated_id', 'Unnamed: 0'), it is NOT a subject_id. It is a technical index that will cause 100% training leakage. 
     3. If no physical entity anchor (like JunctionID or StationID) exists, you MUST set "subject_id": null. Do not hallucinate a primary key as an entity.
+    4. Analyze the provided data schema and statistical profile. Based on the identified domain, determine the most actionable Subject ID that represents the primary entity for clustering (e.g., individual customers, geographic regions, or device nodes). Ensure this ID is used as the anchor for all downstream behavioral aggregations.
 
     TASK:
     1. Define 'Logical Interactions': Create behavioral signals (ratios/multiplication). Specify outlier clipping (e.g., 99th percentile) and zero-fill strategies for division.[cite: 3]

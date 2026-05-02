@@ -1,0 +1,15 @@
+{
+    "domain": "Retail Customer Behavior",
+    "subject_id": "Customer ID",
+    "protected_features": [
+        "Quantity",
+        "Price",
+        "Country"
+    ],
+    "technical_garbage": [
+        "Invoice",
+        "StockCode",
+        "Description",
+        "InvoiceDate"
+    ]
+}
