@@ -1,7 +1,5 @@
 {
-    "subject_id": null,
-    "recommended_algorithm": "GMM",
-    "priority_interactions": [
+    "interaction_priorities": [
         {
             "pair": [
                 "chol",
@@ -53,54 +51,24 @@
             "error_handling": "zero_fill"
         }
     ],
-    "base_metrics": [
-        "age",
-        "trestbps",
-        "chol",
-        "thalch",
-        "oldpeak",
-        "sex_Male",
-        "sex_Female",
-        "cp_typical angina",
-        "cp_asymptomatic",
-        "cp_non-anginal",
-        "cp_atypical angina",
-        "restecg_lv hypertrophy",
-        "restecg_normal",
-        "restecg_st-t abnormality",
-        "restecg_Missing",
-        "slope_downsloping",
-        "slope_flat",
-        "slope_upsloping",
-        "slope_Missing",
-        "thal_fixed defect",
-        "thal_normal",
-        "thal_reversable defect",
-        "thal_Missing"
-    ],
+    "preprocessing_metadata": {
+        "recommended_scaler": "PowerTransformer",
+        "imputation_strategy": "median",
+        "categorical_encoding": "one-hot",
+        "dimensionality_reduction_recommendation": {
+            "method": "PCA",
+            "variance_retention_threshold": 0.95
+        }
+    },
+    "subject_id": null,
     "aggregation_strategy": {
         "columns_to_sum": [],
         "columns_to_mean": [],
         "columns_to_mode": []
     },
-    "selection_params": {
-        "correlation_threshold": 0.85,
-        "variance_threshold": 0.01,
-        "force_keep": [
-            "chol_per_age",
-            "thalch_per_age",
-            "oldpeak_x_exang",
-            "trestbps_x_age",
-            "fbs_x_chol"
-        ]
+    "feature_selection": {
+        "max_correlation_threshold": 0.85,
+        "variance_threshold": 0.01
     },
-    "preprocessing": {
-        "scaler": "PowerTransformer",
-        "imputation": "median",
-        "encoding": "one-hot",
-        "pca": {
-            "method": "PCA",
-            "variance_retention_threshold": 0.95
-        }
-    }
+    "recommended_algorithm": "GMM"
 }

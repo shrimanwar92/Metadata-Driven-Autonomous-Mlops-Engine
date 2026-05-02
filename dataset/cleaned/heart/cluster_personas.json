@@ -1,26 +1,242 @@
-[
-    {
-        "persona_id": 0,
-        "population_share": "18.99%",
-        "defining_traits": [
-            "Extreme High age_per_chol",
-            "Extreme High trestbps_per_chol",
-            "Extreme High thalch_per_chol",
-            "Low chol",
-            "Low chol_per_trestbps"
-        ],
-        "logical_summary": "Group 0 captures patients/customers defined primarily by Extreme High age_per_chol."
+{
+    "0": {
+        "dominant_traits": {
+            "PC1": "Low",
+            "PC2": "Low",
+            "PC3": "Average",
+            "PC4": "High",
+            "PC5": "Average",
+            "PC6": "Average",
+            "PC7": "Average",
+            "PC8": "Average",
+            "PC9": "Average",
+            "PC10": "Average",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "High",
+            "PC14": "Low",
+            "PC15": "Average",
+            "PC16": "Average",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 95,
+        "mean_certainty": 0.9999999996585816
     },
-    {
-        "persona_id": 1,
-        "population_share": "81.01%",
-        "defining_traits": [
-            "Low age_per_chol",
-            "Low trestbps_per_chol",
-            "Low thalch_per_chol",
-            "Low chol",
-            "Low chol_per_trestbps"
-        ],
-        "logical_summary": "Group 1 captures patients/customers defined primarily by Low age_per_chol."
+    "1": {
+        "dominant_traits": {
+            "PC1": "High",
+            "PC2": "Average",
+            "PC3": "High",
+            "PC4": "Low",
+            "PC5": "Average",
+            "PC6": "Low",
+            "PC7": "High",
+            "PC8": "Average",
+            "PC9": "Low",
+            "PC10": "Average",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Average",
+            "PC14": "Average",
+            "PC15": "Average",
+            "PC16": "Low",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 106,
+        "mean_certainty": 0.9999999999999534
+    },
+    "2": {
+        "dominant_traits": {
+            "PC1": "High",
+            "PC2": "High",
+            "PC3": "Average",
+            "PC4": "Average",
+            "PC5": "Average",
+            "PC6": "Low",
+            "PC7": "High",
+            "PC8": "Average",
+            "PC9": "Average",
+            "PC10": "Average",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Average",
+            "PC14": "Average",
+            "PC15": "Average",
+            "PC16": "Average",
+            "PC17": "Average",
+            "PC18": "Low"
+        },
+        "sample_size": 72,
+        "mean_certainty": 0.9999858783375863
+    },
+    "3": {
+        "dominant_traits": {
+            "PC1": "Average",
+            "PC2": "Low",
+            "PC3": "Low",
+            "PC4": "Average",
+            "PC5": "Average",
+            "PC6": "Average",
+            "PC7": "Low",
+            "PC8": "Average",
+            "PC9": "Average",
+            "PC10": "High",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Average",
+            "PC14": "High",
+            "PC15": "Average",
+            "PC16": "Average",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 122,
+        "mean_certainty": 0.9999999179882934
+    },
+    "4": {
+        "dominant_traits": {
+            "PC1": "Low",
+            "PC2": "High",
+            "PC3": "High",
+            "PC4": "Low",
+            "PC5": "Average",
+            "PC6": "Average",
+            "PC7": "Average",
+            "PC8": "Average",
+            "PC9": "Low",
+            "PC10": "Average",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Average",
+            "PC14": "Average",
+            "PC15": "Average",
+            "PC16": "Average",
+            "PC17": "Average",
+            "PC18": "High"
+        },
+        "sample_size": 52,
+        "mean_certainty": 0.999999957532454
+    },
+    "5": {
+        "dominant_traits": {
+            "PC1": "Average",
+            "PC2": "High",
+            "PC3": "Low",
+            "PC4": "Average",
+            "PC5": "Average",
+            "PC6": "Average",
+            "PC7": "Low",
+            "PC8": "Average",
+            "PC9": "Average",
+            "PC10": "Low",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Average",
+            "PC14": "Low",
+            "PC15": "Average",
+            "PC16": "High",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 71,
+        "mean_certainty": 1.0
+    },
+    "6": {
+        "dominant_traits": {
+            "PC1": "Average",
+            "PC2": "High",
+            "PC3": "Low",
+            "PC4": "Average",
+            "PC5": "Average",
+            "PC6": "Average",
+            "PC7": "High",
+            "PC8": "High",
+            "PC9": "High",
+            "PC10": "High",
+            "PC11": "Low",
+            "PC12": "Low",
+            "PC13": "Low",
+            "PC14": "Average",
+            "PC15": "Average",
+            "PC16": "Low",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 46,
+        "mean_certainty": 1.0
+    },
+    "7": {
+        "dominant_traits": {
+            "PC1": "Low",
+            "PC2": "Low",
+            "PC3": "Average",
+            "PC4": "Average",
+            "PC5": "Average",
+            "PC6": "Average",
+            "PC7": "Average",
+            "PC8": "Average",
+            "PC9": "Average",
+            "PC10": "Low",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Low",
+            "PC14": "Average",
+            "PC15": "Average",
+            "PC16": "Average",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 120,
+        "mean_certainty": 0.9999999999998441
+    },
+    "8": {
+        "dominant_traits": {
+            "PC1": "High",
+            "PC2": "Low",
+            "PC3": "Average",
+            "PC4": "Low",
+            "PC5": "Low",
+            "PC6": "High",
+            "PC7": "High",
+            "PC8": "High",
+            "PC9": "High",
+            "PC10": "Low",
+            "PC11": "High",
+            "PC12": "High",
+            "PC13": "High",
+            "PC14": "Low",
+            "PC15": "Low",
+            "PC16": "Average",
+            "PC17": "High",
+            "PC18": "Average"
+        },
+        "sample_size": 54,
+        "mean_certainty": 1.0
+    },
+    "9": {
+        "dominant_traits": {
+            "PC1": "Average",
+            "PC2": "Average",
+            "PC3": "High",
+            "PC4": "Average",
+            "PC5": "Average",
+            "PC6": "High",
+            "PC7": "Low",
+            "PC8": "Average",
+            "PC9": "Average",
+            "PC10": "Average",
+            "PC11": "Average",
+            "PC12": "Average",
+            "PC13": "Average",
+            "PC14": "Average",
+            "PC15": "Average",
+            "PC16": "Average",
+            "PC17": "Average",
+            "PC18": "Average"
+        },
+        "sample_size": 182,
+        "mean_certainty": 0.9999999999965549
     }
-]
+}

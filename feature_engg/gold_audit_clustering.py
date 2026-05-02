@@ -48,7 +48,8 @@ def run_gold_audit():
         "preprocessing": {
             "scaler": prep_meta.get("recommended_scaler", "PowerTransformer"),
             "imputation": prep_meta.get("imputation_strategy", "median"),
-            "encoding": prep_meta.get("categorical_encoding", "one-hot")
+            "encoding": prep_meta.get("categorical_encoding", "one-hot"),
+            "pca": prep_meta.get("dimensionality_reduction_recommendation", {})
         }
     }
 

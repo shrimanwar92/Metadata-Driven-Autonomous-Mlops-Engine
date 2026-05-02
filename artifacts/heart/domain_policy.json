@@ -1,17 +1,20 @@
 {
-    "domain": "Clinical",
-    "subject_id": "id",
+    "domain": "Healthcare",
+    "subject_id": null,
     "protected_features": [
         "age",
+        "sex",
+        "cp",
         "trestbps",
         "chol",
+        "fbs",
+        "restecg",
         "thalch",
-        "oldpeak",
-        "cp",
-        "thal",
-        "ca"
+        "exang",
+        "oldpeak"
     ],
     "technical_garbage": [
+        "id",
         "dataset"
     ]
 }

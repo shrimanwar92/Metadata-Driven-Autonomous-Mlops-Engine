@@ -1,31 +1,49 @@
 {
     "drop_features": [
-        "dataset"
+        "id",
+        "dataset",
+        "ca"
     ],
-    "subject_id": "id",
+    "subject_id": null,
     "imputation": {
-        "mean_median": [
+        "mean": [
             "trestbps",
             "chol",
-            "thalch",
-            "oldpeak",
-            "ca"
+            "thalch"
+        ],
+        "median": [
+            "oldpeak"
         ],
         "categorical": [
-            "fbs",
             "restecg",
-            "exang",
             "slope",
             "thal"
         ]
     },
     "encoding": {
-        "one_hot": [],
+        "one_hot": [
+            "sex",
+            "cp",
+            "restecg",
+            "slope",
+            "thal"
+        ],
         "rare_label": []
     },
     "transformations": {
         "log": [],
-        "yeo_johnson": []
+        "yeo_johnson": [],
+        "outlier_clipping": []
     },
-    "scaling": "RobustScaler"
+    "scaling": {
+        "robust": [
+            "chol",
+            "oldpeak"
+        ],
+        "standard": [
+            "age",
+            "trestbps",
+            "thalch"
+        ]
+    }
 }

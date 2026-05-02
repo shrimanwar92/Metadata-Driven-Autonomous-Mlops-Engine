@@ -63,7 +63,7 @@ def generate_feature_engg_strategy(max_retries=5):
     2. Preprocessing Policy: Choose a scaler (PowerTransformer for skewed data, RobustScaler for outliers) and an imputation strategy.[cite: 3, 6]
     3. Aggregation Strategy: Define how to group data by the validated subject_id. Specify which columns should be 'mean', 'sum', or 'mode' (for categorical context).[cite: 5]
     4. Feature Selection: Set thresholds for max correlation and variance to prevent redundancy.
-    5. Dimensionality Constraint: If the number of generated features exceeds 15, recommend a PCA variance retention threshold (e.g., 95%) in the metadata.
+    5. Dimensionality Constraint: If the number of generated features exceeds 15, recommend a PCA variance retention threshold (e.g., 95%) in the metadata key dimensionality_reduction_recommendation.
 
     OUTPUT FORMAT:
     Return ONLY a valid JSON object:
@@ -80,7 +80,8 @@ def generate_feature_engg_strategy(max_retries=5):
         "preprocessing_metadata": {{
             "recommended_scaler": "PowerTransformer" | "RobustScaler",
             "imputation_strategy": "median" | "mean",
-            "categorical_encoding": "one-hot"
+            "categorical_encoding": "one-hot",
+            "dimensionality_reduction_recommendation": {{}}
         }},
         "subject_id": "string_or_null",
         "aggregation_strategy": {{
