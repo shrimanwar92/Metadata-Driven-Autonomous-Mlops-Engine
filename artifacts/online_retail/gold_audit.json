@@ -12,7 +12,7 @@
                 "UnitPrice"
             ],
             "logic": "multiplication",
-            "name": "Revenue"
+            "name": "LineItemRevenue"
         }
     ],
     "base_metrics": [
@@ -22,7 +22,7 @@
     "selection_params": {
         "correlation_threshold": 0.95,
         "force_keep": [
-            "Revenue"
+            "LineItemRevenue"
         ]
     },
     "scaling": "RobustScaler"

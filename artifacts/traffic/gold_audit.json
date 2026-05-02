@@ -1,29 +1,79 @@
 {
-    "metadata": {
-        "entity_id": "generated_id",
-        "hopkins_statistic": 0.382,
-        "is_clusterable": false,
-        "suggested_algo": "HDBSCAN"
+    "subject_id": null,
+    "recommended_algorithm": "GMM",
+    "priority_interactions": [
+        {
+            "pair": [
+                "flow_rate",
+                "lane_occupancy"
+            ],
+            "logic": "ratio",
+            "name": "flow_rate_per_lane_occupancy",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        },
+        {
+            "pair": [
+                "waiting_time",
+                "vehicle_count"
+            ],
+            "logic": "multiplication",
+            "name": "congestion_index",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        },
+        {
+            "pair": [
+                "average_speed",
+                "flow_rate"
+            ],
+            "logic": "ratio",
+            "name": "speed_efficiency",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        },
+        {
+            "pair": [
+                "vehicle_count",
+                "lane_occupancy"
+            ],
+            "logic": "ratio",
+            "name": "vehicle_density_per_lane",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        }
+    ],
+    "base_metrics": [
+        "Unnamed: 0",
+        "vehicle_count",
+        "average_speed",
+        "lane_occupancy",
+        "flow_rate",
+        "waiting_time",
+        "generated_id",
+        "time_of_day_evening",
+        "time_of_day_afternoon",
+        "time_of_day_night",
+        "time_of_day_morning"
+    ],
+    "aggregation_strategy": {
+        "columns_to_sum": [],
+        "columns_to_mean": [],
+        "columns_to_mode": []
     },
-    "numerical_transformations": {
-        "log_transform": [
-            "waiting_time"
-        ],
-        "yeo_johnson": [],
-        "scaling_method": "RobustScaler"
-    },
-    "selection_reduction": {
-        "correlation_threshold": 0.98,
-        "apply_pca": false,
-        "pca_variance": 0.95
-    },
-    "aggregations": {
-        "metrics": [
-            "vehicle_count",
-            "average_speed",
-            "lane_occupancy",
-            "flow_rate",
-            "waiting_time"
+    "selection_params": {
+        "correlation_threshold": 0.85,
+        "variance_threshold": 0.01,
+        "force_keep": [
+            "flow_rate_per_lane_occupancy",
+            "congestion_index",
+            "speed_efficiency",
+            "vehicle_density_per_lane"
         ]
+    },
+    "preprocessing": {
+        "scaler": "PowerTransformer",
+        "imputation": "median",
+        "encoding": "one-hot"
     }
 }

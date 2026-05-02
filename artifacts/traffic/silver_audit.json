@@ -4,16 +4,30 @@
     ],
     "subject_id": null,
     "imputation": {
-        "mean_median": [],
+        "mean": [],
+        "median": [],
         "categorical": []
     },
     "encoding": {
-        "one_hot": [],
+        "one_hot": [
+            "time_of_day"
+        ],
         "rare_label": []
     },
     "transformations": {
         "log": [],
-        "yeo_johnson": []
+        "yeo_johnson": [],
+        "outlier_clipping": []
     },
-    "scaling": "RobustScaler"
+    "scaling": {
+        "robust": [
+            "lane_occupancy",
+            "waiting_time"
+        ],
+        "standard": [
+            "vehicle_count",
+            "average_speed",
+            "flow_rate"
+        ]
+    }
 }

@@ -7,7 +7,8 @@
     ],
     "subject_id": "CustomerID",
     "imputation": {
-        "mean_median": [],
+        "mean": [],
+        "median": [],
         "categorical": []
     },
     "encoding": {
@@ -18,7 +19,14 @@
     },
     "transformations": {
         "log": [],
-        "yeo_johnson": []
+        "yeo_johnson": [],
+        "outlier_clipping": []
     },
-    "scaling": "RobustScaler"
+    "scaling": {
+        "robust": [
+            "Quantity",
+            "UnitPrice"
+        ],
+        "standard": []
+    }
 }

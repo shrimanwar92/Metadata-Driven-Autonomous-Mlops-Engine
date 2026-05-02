@@ -1,17 +1,29 @@
 {
-    "KMeans": {
-        "optimal_k": 2,
-        "silhouette": 0.8043611829340803,
-        "ch_score": 6778.865645349772
+    "suggested_k": 4,
+    "metrics": {
+        "elbow_k": 4,
+        "best_silhouette_k": 2,
+        "silhouette_scores": {
+            "2": 0.9944819831972407,
+            "3": 0.9918443311550266,
+            "4": 0.9852395092007676,
+            "5": 0.9643159741273445,
+            "6": 0.9643420690661129,
+            "7": 0.9643447487354327,
+            "8": 0.9642726609697249,
+            "9": 0.9236747564225507,
+            "10": 0.9014160557766682
+        }
     },
-    "Agglomerative": {
-        "optimal_k": 2,
-        "silhouette": 0.8304484555668644,
-        "ch_score": 6044.767795916742
-    },
-    "GMM": {
-        "optimal_k": 2,
-        "silhouette": 0.16646115701677397,
-        "ch_score": 702.3766638319184
-    }
+    "features_used": [
+        "vehicle_count",
+        "average_speed",
+        "flow_rate",
+        "time_of_day_evening",
+        "time_of_day_afternoon",
+        "time_of_day_night",
+        "time_of_day_morning",
+        "Traffic_Momentum",
+        "Traffic_Density"
+    ]
 }

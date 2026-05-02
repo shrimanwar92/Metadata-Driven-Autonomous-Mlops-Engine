@@ -1,5 +1,5 @@
 {
-    "domain": "Financial",
+    "domain": "Credit Card Customer Behavior",
     "subject_id": "CUST_ID",
     "protected_features": [
         "BALANCE",
@@ -20,5 +20,7 @@
         "PRC_FULL_PAYMENT",
         "TENURE"
     ],
-    "technical_garbage": []
+    "technical_garbage": [
+        "CUST_ID"
+    ]
 }

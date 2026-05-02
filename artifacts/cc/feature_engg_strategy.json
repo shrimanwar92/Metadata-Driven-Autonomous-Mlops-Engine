@@ -1,0 +1,108 @@
+{
+    "interaction_priorities": [
+        {
+            "pair": [
+                "BALANCE",
+                "CREDIT_LIMIT"
+            ],
+            "logic": "ratio",
+            "name": "Credit_Utilization_Ratio"
+        },
+        {
+            "pair": [
+                "PURCHASES",
+                "PURCHASES_TRX"
+            ],
+            "logic": "ratio",
+            "name": "Average_Purchase_Value"
+        },
+        {
+            "pair": [
+                "CASH_ADVANCE",
+                "CASH_ADVANCE_TRX"
+            ],
+            "logic": "ratio",
+            "name": "Average_Cash_Advance_Value"
+        },
+        {
+            "pair": [
+                "ONEOFF_PURCHASES",
+                "PURCHASES"
+            ],
+            "logic": "ratio",
+            "name": "Proportion_OneOff_Purchases"
+        },
+        {
+            "pair": [
+                "INSTALLMENTS_PURCHASES",
+                "PURCHASES"
+            ],
+            "logic": "ratio",
+            "name": "Proportion_Installment_Purchases"
+        },
+        {
+            "pair": [
+                "PAYMENTS",
+                "MINIMUM_PAYMENTS"
+            ],
+            "logic": "ratio",
+            "name": "Payment_to_MinPayment_Ratio"
+        },
+        {
+            "pair": [
+                "PURCHASES",
+                "TENURE"
+            ],
+            "logic": "ratio",
+            "name": "Avg_Monthly_Purchases"
+        },
+        {
+            "pair": [
+                "CASH_ADVANCE",
+                "TENURE"
+            ],
+            "logic": "ratio",
+            "name": "Avg_Monthly_Cash_Advance"
+        },
+        {
+            "pair": [
+                "BALANCE",
+                "TENURE"
+            ],
+            "logic": "ratio",
+            "name": "Avg_Monthly_Balance"
+        }
+    ],
+    "semantic_groups": {
+        "Account_Status_Capacity": [
+            "BALANCE",
+            "BALANCE_FREQUENCY",
+            "CREDIT_LIMIT",
+            "TENURE"
+        ],
+        "Spending_Behavior_Purchases": [
+            "PURCHASES",
+            "ONEOFF_PURCHASES",
+            "INSTALLMENTS_PURCHASES",
+            "PURCHASES_FREQUENCY",
+            "ONEOFF_PURCHASES_FREQUENCY",
+            "PURCHASES_INSTALLMENTS_FREQUENCY",
+            "PURCHASES_TRX"
+        ],
+        "Cash_Advance_Behavior": [
+            "CASH_ADVANCE",
+            "CASH_ADVANCE_FREQUENCY",
+            "CASH_ADVANCE_TRX"
+        ],
+        "Payment_Financial_Discipline": [
+            "PAYMENTS",
+            "MINIMUM_PAYMENTS",
+            "PRC_FULL_PAYMENT"
+        ]
+    },
+    "synthetic_targets": [
+        "Financial Prudence Score (reflecting responsible credit usage: low credit utilization, high payment-to-minimum ratio, and high percentage of full payments)",
+        "Spending Profile Type (differentiating between big spenders, frequent small spenders, one-off shoppers, and installment users based on purchase patterns)",
+        "Credit Dependency Level (indicating reliance on credit for liquidity: high cash advance usage, high balance, and potentially low full payment percentage)"
+    ]
+}

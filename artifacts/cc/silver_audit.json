@@ -2,7 +2,8 @@
     "drop_features": [],
     "subject_id": "CUST_ID",
     "imputation": {
-        "mean_median": [
+        "mean": [],
+        "median": [
             "CREDIT_LIMIT",
             "MINIMUM_PAYMENTS"
         ],
@@ -14,7 +15,30 @@
     },
     "transformations": {
         "log": [],
-        "yeo_johnson": []
+        "yeo_johnson": [],
+        "outlier_clipping": []
     },
-    "scaling": "RobustScaler"
+    "scaling": {
+        "robust": [
+            "BALANCE",
+            "PURCHASES",
+            "ONEOFF_PURCHASES",
+            "INSTALLMENTS_PURCHASES",
+            "CASH_ADVANCE",
+            "PURCHASES_FREQUENCY",
+            "ONEOFF_PURCHASES_FREQUENCY",
+            "PURCHASES_INSTALLMENTS_FREQUENCY",
+            "CASH_ADVANCE_FREQUENCY",
+            "CASH_ADVANCE_TRX",
+            "PURCHASES_TRX",
+            "CREDIT_LIMIT",
+            "PAYMENTS",
+            "MINIMUM_PAYMENTS",
+            "PRC_FULL_PAYMENT"
+        ],
+        "standard": [
+            "BALANCE_FREQUENCY",
+            "TENURE"
+        ]
+    }
 }

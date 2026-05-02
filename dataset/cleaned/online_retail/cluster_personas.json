@@ -1,27 +1,62 @@
 {
     "0": {
-        "Quantity": 0.7281237754438544,
-        "UnitPrice": 0.6552401186072659,
-        "Revenue": 0.6219548159379242
+        "raw_means": {
+            "Quantity": 0.7421651186066783,
+            "UnitPrice": 0.6512629968755824,
+            "LineItemRevenue": -0.697530122130589
+        },
+        "traits": {
+            "Quantity": "High",
+            "UnitPrice": "High",
+            "LineItemRevenue": "Low"
+        }
     },
     "1": {
-        "Quantity": -0.4092140921409214,
-        "UnitPrice": 2626.3747459349597,
-        "Revenue": -374.64512195121955
+        "raw_means": {
+            "Quantity": -0.4444444444444444,
+            "UnitPrice": 13530.527777777776,
+            "LineItemRevenue": -18711.945978391348
+        },
+        "traits": {
+            "Quantity": "Average",
+            "UnitPrice": "High",
+            "LineItemRevenue": "Low"
+        }
     },
     "2": {
-        "Quantity": 8622.444444444445,
-        "UnitPrice": -0.18055555555555555,
-        "Revenue": 8772.632142857145
+        "raw_means": {
+            "Quantity": 1030.3333333333333,
+            "UnitPrice": 4483.790798611111,
+            "LineItemRevenue": -7358.965186074429
+        },
+        "traits": {
+            "Quantity": "High",
+            "UnitPrice": "High",
+            "LineItemRevenue": "Low"
+        }
     },
     "3": {
-        "Quantity": -8623.111111111111,
-        "UnitPrice": -0.18055555555555555,
-        "Revenue": -8774.025000000001
+        "raw_means": {
+            "Quantity": 37.25525525525525,
+            "UnitPrice": 1999.1090465465468,
+            "LineItemRevenue": -2539.2044709775796
+        },
+        "traits": {
+            "Quantity": "High",
+            "UnitPrice": "High",
+            "LineItemRevenue": "Low"
+        }
     },
     "4": {
-        "Quantity": -0.4444444444444444,
-        "UnitPrice": 13530.527777777776,
-        "Revenue": -2784.2678571428573
+        "raw_means": {
+            "Quantity": -8623.111111111111,
+            "UnitPrice": -0.18055555555555555,
+            "LineItemRevenue": 4633.196878751501
+        },
+        "traits": {
+            "Quantity": "Low",
+            "UnitPrice": "Average",
+            "LineItemRevenue": "High"
+        }
     }
 }

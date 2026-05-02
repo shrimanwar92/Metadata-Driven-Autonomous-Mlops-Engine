@@ -1,26 +1,202 @@
-[
-    {
-        "persona_id": 0,
-        "population_share": "99.57%",
-        "defining_traits": [
-            "Low flow_rate_per_average_speed",
-            "Low vehicle_count_per_average_speed",
-            "Low lane_occupancy_per_average_speed",
-            "Low waiting_time_per_average_speed",
-            "Low average_speed"
-        ],
-        "logical_summary": "Group 0 captures users defined primarily by Low flow_rate_per_average_speed."
+{
+    "0": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "Low",
+            "time_of_day_morning": "High",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 542,
+        "mean_certainty": 0.9660794734825124
     },
-    {
-        "persona_id": 1,
-        "population_share": "0.43%",
-        "defining_traits": [
-            "Extreme High flow_rate_per_average_speed",
-            "Extreme High vehicle_count_per_average_speed",
-            "Extreme High lane_occupancy_per_average_speed",
-            "Extreme High waiting_time_per_average_speed",
-            "Extreme Low average_speed"
-        ],
-        "logical_summary": "Group 1 captures users defined primarily by Extreme High flow_rate_per_average_speed."
+    "1": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "High",
+            "time_of_day_morning": "Low",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 473,
+        "mean_certainty": 0.9698444088810007
+    },
+    "2": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "High",
+            "time_of_day_night": "Low",
+            "time_of_day_morning": "Low",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 2073,
+        "mean_certainty": 0.9894136706444207
+    },
+    "3": {
+        "dominant_traits": {
+            "vehicle_count": "Low",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "High",
+            "generated_id": "Average",
+            "time_of_day_evening": "Average",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "Average",
+            "time_of_day_morning": "Average",
+            "flow_rate_per_lane_occupancy": "Low",
+            "congestion_index": "Low",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 13,
+        "mean_certainty": 0.9999182663923408
+    },
+    "4": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "High",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "Low",
+            "time_of_day_morning": "Low",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 441,
+        "mean_certainty": 0.961212678483466
+    },
+    "5": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "High",
+            "time_of_day_night": "Low",
+            "time_of_day_morning": "Low",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "High"
+        },
+        "sample_size": 390,
+        "mean_certainty": 0.9619509589901178
+    },
+    "6": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "High",
+            "time_of_day_morning": "Low",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 2050,
+        "mean_certainty": 0.9894100547114698
+    },
+    "7": {
+        "dominant_traits": {
+            "vehicle_count": "High",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "High",
+            "waiting_time": "High",
+            "generated_id": "Low",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "Average",
+            "time_of_day_morning": "High",
+            "flow_rate_per_lane_occupancy": "Low",
+            "congestion_index": "High",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Low"
+        },
+        "sample_size": 3,
+        "mean_certainty": 1.0
+    },
+    "8": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "High",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "Low",
+            "time_of_day_morning": "Low",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 2078,
+        "mean_certainty": 0.9903093123085329
+    },
+    "9": {
+        "dominant_traits": {
+            "vehicle_count": "Average",
+            "average_speed": "Average",
+            "lane_occupancy": "Average",
+            "flow_rate": "Average",
+            "waiting_time": "Average",
+            "generated_id": "Average",
+            "time_of_day_evening": "Low",
+            "time_of_day_afternoon": "Low",
+            "time_of_day_night": "Low",
+            "time_of_day_morning": "High",
+            "flow_rate_per_lane_occupancy": "Average",
+            "congestion_index": "Average",
+            "speed_efficiency": "Average",
+            "vehicle_density_per_lane": "Average"
+        },
+        "sample_size": 1937,
+        "mean_certainty": 0.9872848307001404
     }
-]
+}

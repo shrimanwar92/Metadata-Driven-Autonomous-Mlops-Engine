@@ -34,9 +34,6 @@ def generate_feature_engg_strategy(max_retries=5):
     with open(DOMAIN_POLICY_PATH, 'r') as f:
         policy = json.load(f)
 
-    report = json.dumps(json.load(f), separators=(",", ":"))
-    policy = json.dumps(policy, separators=(",", ":"))
-
     variables = report.get('variables', {})
     domain_name = policy.get("domain", "Unknown")
     protected = policy.get("protected_features", [])
@@ -50,30 +47,52 @@ def generate_feature_engg_strategy(max_retries=5):
     
     prompt = f"""
     Act as a Senior Data Scientist and Domain Expert. 
-    Analyze the following schema and domain to create a Feature Engineering Strategy for Clustering.
+    Analyze the following schema and domain to create a technical Feature Engineering Strategy for Clustering.
 
     DOMAIN: {domain_name}
-    PROTECTED FEATURES: {protected}
-    SCHEMA (Cleaned Data):
+    SCHEMA (Cleaned Data Profile):
     {schema_str}
 
+    CRITICAL INSTRUCTIONS FOR SUBJECT_ID:
+    1. Identify the 'subject_id' (the entity we are clustering). 
+    2. ANTI-LEAKAGE RULE: If a column has a 1:1 relationship with rows or is perfectly correlated with the index (e.g., 'generated_id', 'Unnamed: 0'), it is NOT a subject_id. It is a technical index that will cause 100% training leakage. 
+    3. If no physical entity anchor (like JunctionID or StationID) exists, you MUST set "subject_id": null. Do not hallucinate a primary key as an entity.
+
     TASK:
-    1. Identify 'Logical Interactions': Which numerical columns should be multiplied/divided to create high-value behavioral signals? (e.g., 'UnitPrice * Quantity' = Revenue).
-    2. Identify 'Semantic Groupings': Group features by intent (e.g., 'Spending Habits', 'Demographics', 'Traffic Flow').
-    3. Propose 'New Dimensions': Suggest 3 synthetic features that define personas in this domain.
-    4. Define 'Pruning Priority': If features are highly correlated, which one is more semantically important to keep?
+    1. Define 'Logical Interactions': Create behavioral signals (ratios/multiplication). Specify outlier clipping (e.g., 99th percentile) and zero-fill strategies for division.[cite: 3]
+    2. Preprocessing Policy: Choose a scaler (PowerTransformer for skewed data, RobustScaler for outliers) and an imputation strategy.[cite: 3, 6]
+    3. Aggregation Strategy: Define how to group data by the validated subject_id. Specify which columns should be 'mean', 'sum', or 'mode' (for categorical context).[cite: 5]
+    4. Feature Selection: Set thresholds for max correlation and variance to prevent redundancy.
+    5. Dimensionality Constraint: If the number of generated features exceeds 15, recommend a PCA variance retention threshold (e.g., 95%) in the metadata.
 
     OUTPUT FORMAT:
     Return ONLY a valid JSON object:
     {{
         "interaction_priorities": [
-            {{"pair": ["col1", "col2"], "logic": "multiplication", "name": "meaningful_name"}},
-            {{"pair": ["col1", "col2"], "logic": "ratio", "name": "meaningful_ratio"}}
+            {{
+                "pair": ["col1", "col2"], 
+                "logic": "multiplication" | "ratio", 
+                "name": "meaningful_name",
+                "outlier_clipping_percentile": 99,
+                "error_handling": "zero_fill"
+            }}
         ],
-        "semantic_groups": {{
-            "group_name": ["list_of_cols"]
+        "preprocessing_metadata": {{
+            "recommended_scaler": "PowerTransformer" | "RobustScaler",
+            "imputation_strategy": "median" | "mean",
+            "categorical_encoding": "one-hot"
         }},
-        "synthetic_targets": ["dimension_description_1", "dimension_description_2"]
+        "subject_id": "string_or_null",
+        "aggregation_strategy": {{
+            "columns_to_sum": [],
+            "columns_to_mean": [],
+            "columns_to_mode": []
+        }},
+        "feature_selection": {{
+            "max_correlation_threshold": 0.85,
+            "variance_threshold": 0.01
+        }},
+        "recommended_algorithm": "GMM" | "KMeans"
     }}
     """
 

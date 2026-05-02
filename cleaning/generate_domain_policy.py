@@ -35,38 +35,36 @@ def get_domain_policy_from_llm(max_retries=5):
     schema_info = [f"- {col} ({details.get('type', 'Unknown')})" for col, details in variables.items()]
     schema_str = "\n".join(schema_info)
 
+    vars_summary = {}
+    for col, stats in report.get('variables', {}).items():
+        vars_summary[col] = {
+            "type": stats.get('type'),
+            "distinct_percent": stats.get('p_distinct'),
+            "missing_percent": stats.get('p_missing'),
+            "is_unique": stats.get('is_unique'),
+            "skewness": stats.get('skewness')
+        }
+
     # 3. Prompt Configuration
     system_instruction = "You are a specialized Data Architect API. Output ONLY raw JSON. No markdown, no preamble."
     
     prompt = f"""
-    Act as an Expert Data Architect and Behavioral Scientist. 
-    Analyze the following schema and categorize the columns for an Unsupervised Clustering (Persona) task.
+    Act as an Expert Data Architect. Analyze the schema below for Unsupervised Clustering.
+    Analyze this data profile and generate a Domain Policy: {json.dumps(vars_summary)}.
 
-    SCHEMA:
-    {schema_str}
-
-    TASK:
-    1. Identify the 'domain' (e.g., Clinical, Financial, Traffic, Retail).
-    2. Identify the 'subject_id': 
-       - This must be the most granular entity anchor (e.g., CustomerID, PatientID, InvoiceNo).
-       - If no explicit ID exists, return null.
-    3. Identify 'protected_features': 
-       - These are "High-Signal" behavioral columns critical for clustering in this domain.
-       - Examples: 'Spending Score' for Retail, 'heart_rate' for Clinical, 'flow_rate' for Traffic.
-    4. Identify 'technical_garbage': 
-       - Columns with zero entropy or strictly sequential values (e.g., Unnamed: 0, index, row_id).
-       - Explicitly include any column that acts as a sequence in the file.
-    5. Logic for 'Drop vs. Keep':
-       - If a column is a redundant string (like "Name" or "Email"), suggest it for dropping.
-       - If a column represents a category (like "Gender" or "Region"), keep it for encoding.
-
-    OUTPUT FORMAT:
-    Return ONLY a valid JSON object:
+    Consider high-level statistical nuances:
+    - Identify the 'subject_id' (e.g., CustomerID). A column name containing 'id' or 'Id' or 'ID' string.
+    - If the column name contains id and is aggregatable is important column.
+    - If a column name contains id and is a 'Unique Identifier' (unique_values == total_rows or contains 95% unique values), it is **Technical Garbage** (e.g., TransactionID).
+    - Identify 'protected_features': High-variance behavioral metrics critical for personas.
+    - Identify 'technical_garbage': Metadata, sequence IDs, and low-entropy strings.
+    
+    OUTPUT ONLY VALID JSON:
     {{
         "domain": "string",
         "subject_id": "string or null",
-        "protected_features": ["list", "of", "strings"],
-        "technical_garbage": ["list", "of", "strings"]
+        "protected_features": [],
+        "technical_garbage": []
     }}
     """
 

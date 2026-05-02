@@ -1,35 +1,130 @@
 {
-    "metadata": {
-        "entity_id": "CUST_ID",
-        "is_clusterable": true,
-        "total_base_metrics": 16
-    },
-    "numerical_transformations": {
-        "scaling_method": "RobustScaler"
-    },
-    "selection_reduction": {
-        "correlation_threshold": 0.98,
-        "apply_pca": true,
-        "target_variance": 0.99
-    },
-    "aggregations": {
-        "metrics": [
-            "BALANCE",
-            "BALANCE_FREQUENCY",
-            "ONEOFF_PURCHASES",
-            "INSTALLMENTS_PURCHASES",
-            "CASH_ADVANCE",
-            "PURCHASES_FREQUENCY",
-            "ONEOFF_PURCHASES_FREQUENCY",
-            "PURCHASES_INSTALLMENTS_FREQUENCY",
-            "CASH_ADVANCE_FREQUENCY",
-            "CASH_ADVANCE_TRX",
-            "PURCHASES_TRX",
-            "CREDIT_LIMIT",
-            "PAYMENTS",
-            "MINIMUM_PAYMENTS",
-            "PRC_FULL_PAYMENT",
-            "TENURE"
+    "subject_id": "CUST_ID",
+    "protected_features": [
+        "BALANCE",
+        "BALANCE_FREQUENCY",
+        "PURCHASES",
+        "ONEOFF_PURCHASES",
+        "INSTALLMENTS_PURCHASES",
+        "CASH_ADVANCE",
+        "PURCHASES_FREQUENCY",
+        "ONEOFF_PURCHASES_FREQUENCY",
+        "PURCHASES_INSTALLMENTS_FREQUENCY",
+        "CASH_ADVANCE_FREQUENCY",
+        "CASH_ADVANCE_TRX",
+        "PURCHASES_TRX",
+        "CREDIT_LIMIT",
+        "PAYMENTS",
+        "MINIMUM_PAYMENTS",
+        "PRC_FULL_PAYMENT",
+        "TENURE"
+    ],
+    "priority_interactions": [
+        {
+            "pair": [
+                "BALANCE",
+                "CREDIT_LIMIT"
+            ],
+            "logic": "ratio",
+            "name": "Credit_Utilization_Ratio"
+        },
+        {
+            "pair": [
+                "PURCHASES",
+                "PURCHASES_TRX"
+            ],
+            "logic": "ratio",
+            "name": "Average_Purchase_Value"
+        },
+        {
+            "pair": [
+                "CASH_ADVANCE",
+                "CASH_ADVANCE_TRX"
+            ],
+            "logic": "ratio",
+            "name": "Average_Cash_Advance_Value"
+        },
+        {
+            "pair": [
+                "ONEOFF_PURCHASES",
+                "PURCHASES"
+            ],
+            "logic": "ratio",
+            "name": "Proportion_OneOff_Purchases"
+        },
+        {
+            "pair": [
+                "INSTALLMENTS_PURCHASES",
+                "PURCHASES"
+            ],
+            "logic": "ratio",
+            "name": "Proportion_Installment_Purchases"
+        },
+        {
+            "pair": [
+                "PAYMENTS",
+                "MINIMUM_PAYMENTS"
+            ],
+            "logic": "ratio",
+            "name": "Payment_to_MinPayment_Ratio"
+        },
+        {
+            "pair": [
+                "PURCHASES",
+                "TENURE"
+            ],
+            "logic": "ratio",
+            "name": "Avg_Monthly_Purchases"
+        },
+        {
+            "pair": [
+                "CASH_ADVANCE",
+                "TENURE"
+            ],
+            "logic": "ratio",
+            "name": "Avg_Monthly_Cash_Advance"
+        },
+        {
+            "pair": [
+                "BALANCE",
+                "TENURE"
+            ],
+            "logic": "ratio",
+            "name": "Avg_Monthly_Balance"
+        }
+    ],
+    "base_metrics": [
+        "BALANCE",
+        "BALANCE_FREQUENCY",
+        "PURCHASES",
+        "ONEOFF_PURCHASES",
+        "INSTALLMENTS_PURCHASES",
+        "CASH_ADVANCE",
+        "PURCHASES_FREQUENCY",
+        "ONEOFF_PURCHASES_FREQUENCY",
+        "PURCHASES_INSTALLMENTS_FREQUENCY",
+        "CASH_ADVANCE_FREQUENCY",
+        "CASH_ADVANCE_TRX",
+        "PURCHASES_TRX",
+        "CREDIT_LIMIT",
+        "PAYMENTS",
+        "MINIMUM_PAYMENTS",
+        "PRC_FULL_PAYMENT",
+        "TENURE"
+    ],
+    "selection_params": {
+        "correlation_threshold": 0.95,
+        "force_keep": [
+            "Credit_Utilization_Ratio",
+            "Average_Purchase_Value",
+            "Average_Cash_Advance_Value",
+            "Proportion_OneOff_Purchases",
+            "Proportion_Installment_Purchases",
+            "Payment_to_MinPayment_Ratio",
+            "Avg_Monthly_Purchases",
+            "Avg_Monthly_Cash_Advance",
+            "Avg_Monthly_Balance"
         ]
-    }
+    },
+    "scaling": "RobustScaler"
 }

@@ -1,0 +1,15 @@
+{
+    "domain": "Retail",
+    "subject_id": "CustomerID",
+    "protected_features": [
+        "Quantity",
+        "UnitPrice",
+        "Country"
+    ],
+    "technical_garbage": [
+        "InvoiceNo",
+        "StockCode",
+        "Description",
+        "InvoiceDate"
+    ]
+}

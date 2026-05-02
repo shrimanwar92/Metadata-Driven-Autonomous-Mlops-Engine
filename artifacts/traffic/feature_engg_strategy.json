@@ -1,0 +1,60 @@
+{
+    "interaction_priorities": [
+        {
+            "pair": [
+                "flow_rate",
+                "lane_occupancy"
+            ],
+            "logic": "ratio",
+            "name": "flow_rate_per_lane_occupancy",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        },
+        {
+            "pair": [
+                "waiting_time",
+                "vehicle_count"
+            ],
+            "logic": "multiplication",
+            "name": "congestion_index",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        },
+        {
+            "pair": [
+                "average_speed",
+                "flow_rate"
+            ],
+            "logic": "ratio",
+            "name": "speed_efficiency",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        },
+        {
+            "pair": [
+                "vehicle_count",
+                "lane_occupancy"
+            ],
+            "logic": "ratio",
+            "name": "vehicle_density_per_lane",
+            "outlier_clipping_percentile": 99,
+            "error_handling": "zero_fill"
+        }
+    ],
+    "preprocessing_metadata": {
+        "recommended_scaler": "PowerTransformer",
+        "imputation_strategy": "median",
+        "categorical_encoding": "one-hot"
+    },
+    "subject_id": null,
+    "aggregation_strategy": {
+        "columns_to_sum": [],
+        "columns_to_mean": [],
+        "columns_to_mode": []
+    },
+    "feature_selection": {
+        "max_correlation_threshold": 0.85,
+        "variance_threshold": 0.01
+    },
+    "recommended_algorithm": "GMM"
+}

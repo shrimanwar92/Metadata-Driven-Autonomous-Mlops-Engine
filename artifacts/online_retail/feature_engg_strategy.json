@@ -6,24 +6,21 @@
                 "UnitPrice"
             ],
             "logic": "multiplication",
-            "name": "Revenue"
+            "name": "LineItemRevenue"
         }
     ],
     "semantic_groups": {
-        "Transaction Details": [
+        "Spending Habits": [
             "Quantity",
             "UnitPrice"
         ],
-        "Geographic Context": [
+        "Geographic Information": [
             "Country"
-        ],
-        "Monetary Value": [
-            "Revenue"
         ]
     },
     "synthetic_targets": [
-        "Overall Spending Level (e.g., Total Revenue per Customer)",
-        "Price Sensitivity / Product Tier Preference (e.g., Average Unit Price per Customer)",
-        "Purchase Volume / Frequency (e.g., Total Quantity or Number of Transactions per Customer)"
+        "Total Customer Revenue (sum of LineItemRevenue per CustomerID)",
+        "Average Item Price Point (average of UnitPrice per CustomerID)",
+        "Purchase Volume (sum of Quantity per CustomerID)"
     ]
 }

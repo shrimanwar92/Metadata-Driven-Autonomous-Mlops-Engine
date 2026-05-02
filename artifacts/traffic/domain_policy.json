@@ -1,5 +1,5 @@
 {
-    "domain": "Traffic",
+    "domain": "Traffic_Flow_Analysis",
     "subject_id": null,
     "protected_features": [
         "vehicle_count",
